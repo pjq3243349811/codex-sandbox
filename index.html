@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大连沙河口 · 天气与变化</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0c1928;color:#e8f2fb}body{margin:0}main{max-width:1080px;margin:auto;padding:40px 22px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}h1{font-size:28px}small,.muted{color:#a8bdcf}button{background:#a8e6da;color:#122b32;border:0;border-radius:8px;padding:12px 20px;cursor:pointer}section{background:#15283b;border:1px solid #294358;border-radius:16px;padding:24px;margin:20px 0}.metrics{display:flex;flex-wrap:wrap;gap:30px}.metric strong{display:block;font-size:32px;margin-top:10px}.warning{color:#ffd58b;white-space:pre-wrap}#temperature{font-size:64px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}td,th{text-align:left;padding:12px;border-bottom:1px solid #294358}pre{white-space:pre-wrap;font:inherit}#daily{display:flex;gap:16px;flex-wrap:wrap}article{flex:1;min-width:180px;padding:16px;background:#20394c;border-radius:10px}a{color:#a8e6da}
+</style></head><body><main>
+<header><div><small>38.88° N / 121.53° E</small><h1>大连沙河口 · 天气与变化</h1></div><button id="refresh">立即刷新</button></header>
+<p id="meta" class="muted">正在读取仓库最新数据…</p><p class="muted">下次拉取：<span id="countdown">—</span> · 后台每小时更新</p><p id="status" class="warning" role="status"></p>
+<section><div id="temperature">—</div><h2 id="condition">等待数据</h2><p id="observed" class="muted"></p><div class="metrics"><div class="metric">风速<strong id="wind">—</strong></div><div class="metric">阵风<strong id="gust">—</strong></div><div class="metric">降水概率<strong id="probability">—</strong></div><div class="metric">降水量<strong id="rain">—</strong></div></div></section>
+<section><h2>变化提醒</h2><pre id="alerts">等待数据</pre></section>
+<section><h2>未来 24 小时</h2><div class="scroll"><table><thead><tr><th>北京时间</th><th>天气</th><th>温度</th><th>风速 / 阵风</th><th>降水概率</th><th>降水量</th></tr></thead><tbody id="hourly"></tbody></table></div></section>
+<section><h2>未来 3 天</h2><div id="daily"></div></section>
+<section><h2>更多天气信息</h2><p id="limitations" class="muted"></p><details><summary>分钟降水 · 空气质量 · 生活指数</summary><pre id="extras">等待数据</pre></details></section>
+<footer class="muted">数据来源：和风天气 / <a href="https://open-meteo.com/">Open-Meteo</a>。所有时间为北京时间，风速单位 km/h。页面仅读取本仓库数据。</footer>
+</main><script>
+const $=id=>document.getElementById(id), period=600000;
+let next=Date.now()+period,busy=false,latest=null,lastAlerts=null;
+const fmt=(v,u='')=>v===null||v===undefined?'未知':`${v}${u}`;
+const date=s=>new Date(s).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false});
+function cellRow(values){const tr=document.createElement('tr');for(const value of values){const td=document.createElement('td');td.textContent=value;tr.append(td)}return tr}
+function health(){if(!latest)return;const age=Date.now()-Date.parse(latest.updated_at), obs=Date.now()-Date.parse(latest.current.time);const warnings=[];if(!Number.isFinite(age)||age>3*3600000||obs>3*3600000)warnings.push('⚠ 数据已过旧，暂不可用于实时决策。请检查后台更新。');if(lastAlerts&&lastAlerts.level==='错误')warnings.push(lastAlerts.text);$('status').textContent=warnings.join('\n')}
+async function read(path){const r=await fetch(`./data/${path}?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw Error('missing');return r.json()}
+async function refresh(){if(busy)return;busy=true;$('refresh').disabled=true;try{const [w,a]=await Promise.all([read('weather.json'),read('alerts.json')]);if(!w.current||!Array.isArray(w.hourly)||!Number.isFinite(Date.parse(w.updated_at)))throw Error('invalid');latest=w;lastAlerts=a;$('meta').textContent=`最后更新：${date(w.updated_at)} · 数据来源：${w.source} · ${w.fallback_reason||'和风天气'}`;
+$('temperature').textContent=fmt(w.current.temperature,'℃');$('condition').textContent=w.current.text;$('observed').textContent=`实况时间：${date(w.current.time)}`;
+for(const [id,key,unit] of [['wind','wind_speed',' km/h'],['gust','gust',' km/h'],['probability','probability','%'],['rain','precipitation',' mm']])$(id).textContent=fmt(w.current[key],unit);
+$('alerts').textContent=a.text;if(Math.abs(Date.parse(a.checked_at)-Date.parse(w.updated_at))>180000)$('alerts').textContent+='\n⚠ 提醒与天气数据时间不一致，请以检查时间为准。';
+$('hourly').replaceChildren(...w.hourly.map(r=>cellRow([date(r.time),r.text,fmt(r.temperature,'℃'),`${fmt(r.wind_speed)} / ${fmt(r.gust)} km/h`,fmt(r.probability,'%'),fmt(r.precipitation,' mm')])));
+$('daily').replaceChildren(...w.daily.map(r=>{const article=document.createElement('article');article.textContent=`${r.date} · ${r.text} · ${fmt(r.temp_min)}～${fmt(r.temp_max)}℃ · 降水 ${fmt(r.precipitation,' mm')} / ${fmt(r.probability,'%')}`;return article}));
+$('limitations').textContent=w.limitations.join('；');$('extras').textContent=JSON.stringify({分钟降水:w.minute||'暂不可用',空气质量:w.air||'暂不可用',生活指数:w.indices||'暂不可用'},null,2);health();
+}catch(e){$('status').textContent='⚠ 数据文件不存在、读取失败或格式异常。请通过 HTTP 服务打开网页，并检查 Actions。'+(latest?' 当前显示为上次成功读取的数据，可能已经过旧。':' 当前没有可用数据。');$('alerts').textContent='无法读取最新提醒，请勿沿用旧提醒。'}finally{busy=false;$('refresh').disabled=false;next=Date.now()+period}}
+$('refresh').onclick=refresh;setInterval(()=>{const left=Math.max(0,Math.ceil((next-Date.now())/1000));$('countdown').textContent=`${Math.floor(left/60)}分${String(left%60).padStart(2,'0')}秒`;if(!left)refresh();if(latest&&!$('status').textContent.includes('读取失败'))health()},1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()>=next)refresh()});refresh();
+</script></body></html>
