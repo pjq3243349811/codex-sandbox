@@ -102,6 +102,20 @@ class WeatherTests(unittest.TestCase):
         self.assertLessEqual(counts['slow'],250) # 首次冷启动比稳定运行多2次
         self.assertLessEqual(sum(counts.values()),10666)
 
+    def test_main_merges_root_output(self):
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import MagicMock
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            with patch.object(w,'ROOT',root), patch.object(w.sys,'argv',['fetch']), patch.object(w.os,'environ',MagicMock()), patch.object(w,'client',return_value=None), patch.object(w,'fetch_field',side_effect=self.fake_field):
+                self.assertEqual(w.main(),0)
+            result=w.json.loads((root/'weather.json').read_text())
+            self.assertEqual(result['source'],'qweather')
+            self.assertEqual(len(result['layers']),3)
+            self.assertIn('alert_text',result)
+            self.assertEqual(result['daily'],[{'date':'2026-11-07'}]*3)
+
     def test_missing_environment_writes_error(self):
         import tempfile
         from pathlib import Path

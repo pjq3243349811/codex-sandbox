@@ -116,8 +116,8 @@ def refresh_layers(weather, query, lat, lon, now, config_error=None):
                    location={'name':'大连沙河口区','latitude':lat,'longitude':lon},
                    units={'temperature':'℃','wind':'km/h','precipitation':'mm','probability':'%'})
     failures = [name for name, field in fields.items() if field['status'] == 'error']
-    weather['status'] = 'error' if failures else 'ok'
-    weather['error'] = (config_error or '以下字段抓取失败，保留值仅为历史数据：' + '、'.join(failures)) if failures else None
+    weather['status'] = 'error' if failures or config_error else 'ok'
+    weather['error'] = (config_error or '以下字段抓取失败，保留值仅为历史数据：' + '、'.join(failures)) if failures or config_error else None
     weather['updated_at'] = fields.get('current', {}).get('updated_at')
     weather['limitations'] = ['接口未提供的值显示为未知；每层及字段更新时间独立记录']
     return weather
