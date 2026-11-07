@@ -41,14 +41,14 @@ python3 scripts/fetch_weather.py --latitude 38.88 --longitude 121.53
 
 ## 后台更新
 
-`.github/workflows/weather.yml` 每小时第 **17分钟**运行一次，支持 Actions 页面手动 Run workflow；脚本和工作流推送也触发。Secrets 仅注入抓取步骤，`GITHUB_TOKEN` 以 `contents: write` 权限提交根目录 `weather.json` 和 `data/` 中的更新。缺少 Secret 或抓取失败时仍提交错误状态，并将工作流标红。
+`.github/workflows/weather.yml` 每 **10分钟**运行一次（cron：`*/10 * * * *`），支持 Actions 页面手动 Run workflow；脚本和工作流推送也触发。Secrets 仅注入抓取步骤，`GITHUB_TOKEN` 以 `contents: write` 权限提交根目录 `weather.json` 和 `data/` 中的更新。缺少 Secret 或抓取失败时仍提交错误状态，并将工作流标红。
 
 定时仅对默认分支生效，GitHub 调度可能延迟。仓库需允许 Actions 运行和机器人写入；分支保护若限制直接提交，需按仓库规则允许数据更新。
 
 电脑可 `crontab -e` 配置（替换路径；不要将凭据值写进 crontab）：
 
 ```cron
-17 * * * * cd /absolute/path/codex-sandbox && /usr/bin/python3 scripts/fetch_weather.py
+*/10 * * * * cd /absolute/path/codex-sandbox && /usr/bin/python3 scripts/fetch_weather.py
 ```
 
 Termux 可安装 cronie 并运行 crond，使用实际仓库和 Python 绝对路径。定时进程必须从安全环境获得变量。同一个目录不要并行运行多个本地抓取进程。
