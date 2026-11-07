@@ -1,20 +1,707 @@
 {
   "source": "qweather",
-  "status": "error",
-  "updated_at": null,
-  "checked_at": "2026-11-07T15:13:47.175019+08:00",
-  "error": "缺少环境变量 QWEATHER_API_KEY、QWEATHER_API_HOST",
-  "current": null,
-  "hourly": [],
-  "daily": [],
-  "minute": null,
-  "air": null,
-  "indices": null,
-  "alert_text": "检查失败，无法判断提醒",
+  "current": {
+    "time": "2026-11-07T15:25+08:00",
+    "temperature": 6.0,
+    "text": "阴",
+    "wind_speed": 16.0,
+    "gust": null,
+    "precipitation": 0.0,
+    "probability": null
+  },
+  "hourly": [
+    {
+      "time": "2026-11-07T16:00+08:00",
+      "temperature": 6.0,
+      "text": "多云",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 45.0
+    },
+    {
+      "time": "2026-11-07T17:00+08:00",
+      "temperature": 6.0,
+      "text": "多云",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 43.0
+    },
+    {
+      "time": "2026-11-07T18:00+08:00",
+      "temperature": 6.0,
+      "text": "多云",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 51.0
+    },
+    {
+      "time": "2026-11-07T19:00+08:00",
+      "temperature": 6.0,
+      "text": "阴",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 25.0
+    },
+    {
+      "time": "2026-11-07T20:00+08:00",
+      "temperature": 5.0,
+      "text": "阴",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 20.0
+    },
+    {
+      "time": "2026-11-07T21:00+08:00",
+      "temperature": 5.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.1,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-07T22:00+08:00",
+      "temperature": 4.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.48,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-07T23:00+08:00",
+      "temperature": 4.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.46,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T00:00+08:00",
+      "temperature": 3.0,
+      "text": "雨夹雪",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.27,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T01:00+08:00",
+      "temperature": 3.0,
+      "text": "阴",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 58.0
+    },
+    {
+      "time": "2026-11-08T02:00+08:00",
+      "temperature": 2.0,
+      "text": "雨夹雪",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 2.1,
+      "probability": 64.0
+    },
+    {
+      "time": "2026-11-08T03:00+08:00",
+      "temperature": 2.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.31,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T04:00+08:00",
+      "temperature": 3.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.36,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T05:00+08:00",
+      "temperature": 3.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.35,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T06:00+08:00",
+      "temperature": 3.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.39,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T07:00+08:00",
+      "temperature": 3.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.34,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T08:00+08:00",
+      "temperature": 3.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.37,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T09:00+08:00",
+      "temperature": 3.0,
+      "text": "阴",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 22.0
+    },
+    {
+      "time": "2026-11-08T10:00+08:00",
+      "temperature": 2.0,
+      "text": "阴",
+      "wind_speed": 39.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 69.0
+    },
+    {
+      "time": "2026-11-08T11:00+08:00",
+      "temperature": 2.0,
+      "text": "小雨",
+      "wind_speed": 39.0,
+      "gust": null,
+      "precipitation": 2.4,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T12:00+08:00",
+      "temperature": 2.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.5,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T13:00+08:00",
+      "temperature": 2.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.46,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T14:00+08:00",
+      "temperature": 3.0,
+      "text": "小雨",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.18,
+      "probability": 70.0
+    },
+    {
+      "time": "2026-11-08T15:00+08:00",
+      "temperature": 2.0,
+      "text": "雨夹雪",
+      "wind_speed": 43.0,
+      "gust": null,
+      "precipitation": 0.4,
+      "probability": 70.0
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-11-07",
+      "text": "阴",
+      "temp_min": 2.0,
+      "temp_max": 7.0,
+      "precipitation": 0.4,
+      "probability": null
+    },
+    {
+      "date": "2026-11-08",
+      "text": "小雪",
+      "temp_min": 0.0,
+      "temp_max": 3.0,
+      "precipitation": 3.4,
+      "probability": null
+    },
+    {
+      "date": "2026-11-09",
+      "text": "晴",
+      "temp_min": 2.0,
+      "temp_max": 10.0,
+      "precipitation": 0.0,
+      "probability": null
+    }
+  ],
+  "limitations": [
+    "接口未提供的阵风或降水概率显示为未知，不以零代替"
+  ],
+  "minute": {
+    "code": "200",
+    "updateTime": "2026-11-07T15:25+08:00",
+    "fxLink": "https://www.qweather.com",
+    "summary": "未来两小时无降水",
+    "minutely": [
+      {
+        "fxTime": "2026-11-07T15:25+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T15:30+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T15:35+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T15:40+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T15:45+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T15:50+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T15:55+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:00+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:05+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:10+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:15+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:20+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:25+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:30+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:35+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:40+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:45+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:50+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T16:55+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T17:00+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T17:05+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T17:10+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T17:15+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      },
+      {
+        "fxTime": "2026-11-07T17:20+08:00",
+        "precip": "0.00",
+        "type": "rain"
+      }
+    ],
+    "refer": {
+      "sources": [
+        "QWeather"
+      ],
+      "license": [
+        "QWeather Developers License"
+      ]
+    }
+  },
+  "air": {
+    "metadata": {
+      "tag": "907465f92eba129867567f82f336c1e630f4e3003d7e8f17544d4eab61faed68",
+      "attributions": [
+        "https://developer.qweather.com/attribution.html"
+      ]
+    },
+    "indexes": [
+      {
+        "code": "cn-mee",
+        "name": "AQI (CN)",
+        "aqi": 21,
+        "aqiDisplay": "21",
+        "level": "1",
+        "category": "优",
+        "color": {
+          "red": 0,
+          "green": 228,
+          "blue": 0,
+          "alpha": 1
+        },
+        "primaryPollutant": null,
+        "health": {
+          "effect": "空气质量令人满意，基本无空气污染。",
+          "advice": {
+            "generalPopulation": "各类人群可正常活动。",
+            "sensitivePopulation": "各类人群可正常活动。"
+          }
+        }
+      }
+    ],
+    "pollutants": [
+      {
+        "code": "pm2p5",
+        "name": "PM 2.5",
+        "fullName": "细颗粒物（PM2.5）",
+        "concentration": {
+          "value": 4.0,
+          "unit": "μg/m³"
+        },
+        "subIndexes": [
+          {
+            "code": "cn-mee",
+            "aqi": 6,
+            "aqiDisplay": "6"
+          }
+        ]
+      },
+      {
+        "code": "pm10",
+        "name": "PM 10",
+        "fullName": "可吸入颗粒物（PM10）",
+        "concentration": {
+          "value": 13.0,
+          "unit": "μg/m³"
+        },
+        "subIndexes": [
+          {
+            "code": "cn-mee",
+            "aqi": 13,
+            "aqiDisplay": "13"
+          }
+        ]
+      },
+      {
+        "code": "no2",
+        "name": "NO2",
+        "fullName": "二氧化氮",
+        "concentration": {
+          "value": 10.0,
+          "unit": "μg/m³"
+        },
+        "subIndexes": [
+          {
+            "code": "cn-mee",
+            "aqi": 5,
+            "aqiDisplay": "5"
+          }
+        ]
+      },
+      {
+        "code": "o3",
+        "name": "O3",
+        "fullName": "臭氧",
+        "concentration": {
+          "value": 65.0,
+          "unit": "μg/m³"
+        },
+        "subIndexes": [
+          {
+            "code": "cn-mee",
+            "aqi": 21,
+            "aqiDisplay": "21"
+          }
+        ]
+      },
+      {
+        "code": "so2",
+        "name": "SO2",
+        "fullName": "二氧化硫",
+        "concentration": {
+          "value": 7.0,
+          "unit": "μg/m³"
+        },
+        "subIndexes": [
+          {
+            "code": "cn-mee",
+            "aqi": 3,
+            "aqiDisplay": "3"
+          }
+        ]
+      },
+      {
+        "code": "co",
+        "name": "CO",
+        "fullName": "一氧化碳",
+        "concentration": {
+          "value": 0.4,
+          "unit": "mg/m³"
+        },
+        "subIndexes": [
+          {
+            "code": "cn-mee",
+            "aqi": 5,
+            "aqiDisplay": "5"
+          }
+        ]
+      }
+    ]
+  },
+  "indices": {
+    "code": "200",
+    "updateTime": "2026-11-07T15:33+08:00",
+    "fxLink": "https://www.qweather.com/indices/ganjingzi-101070211.html",
+    "daily": [
+      {
+        "date": "2026-11-07",
+        "type": "1",
+        "name": "运动指数",
+        "level": "2",
+        "category": "较适宜",
+        "text": "阴天，较适宜进行各种运动。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "2",
+        "name": "洗车指数",
+        "level": "4",
+        "category": "不宜",
+        "text": "不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "3",
+        "name": "穿衣指数",
+        "level": "2",
+        "category": "冷",
+        "text": "天气冷，建议着棉服、羽绒服、皮夹克加羊毛衫等冬季服装。年老体弱者宜着厚棉衣、冬大衣或厚羽绒服。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "4",
+        "name": "钓鱼指数",
+        "level": "3",
+        "category": "不宜",
+        "text": "风力太大，不适合垂钓。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "5",
+        "name": "紫外线指数",
+        "level": "1",
+        "category": "最弱",
+        "text": "属弱紫外线辐射天气，无需特别防护。若长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "6",
+        "name": "旅游指数",
+        "level": "5",
+        "category": "不适宜",
+        "text": "天气较好，体感稍凉，风比较大，会对您的出行产生一定的影响，出游请注意保暖，带上防风衣物。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "7",
+        "name": "过敏指数",
+        "level": "1",
+        "category": "极不易发",
+        "text": "天气条件极不易诱发过敏，风力较大，外出注意防风。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "8",
+        "name": "舒适度指数",
+        "level": "6",
+        "category": "不舒适",
+        "text": "白天天气以阴为主，且较晾的天气和较强的风力，都会使您感觉偏冷，不舒适，请注意添加衣物。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "9",
+        "name": "感冒指数",
+        "level": "3",
+        "category": "易发",
+        "text": "相对于今天将会出现大幅度降温，风力较大，易发生感冒，请注意适当增加衣服。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "10",
+        "name": "空气污染扩散条件指数",
+        "level": "1",
+        "category": "优",
+        "text": "气象条件非常有利于空气污染物稀释、扩散和清除，可在室外正常活动。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "11",
+        "name": "空调开启指数",
+        "level": "3",
+        "category": "较少开启",
+        "text": "您将感到很舒适，一般不需要开启空调。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "12",
+        "name": "太阳镜指数",
+        "level": "5",
+        "category": "非常必要",
+        "text": "白天风力较强，建议佩戴标有防风沙功能的太阳镜"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "13",
+        "name": "化妆指数",
+        "level": "1",
+        "category": "保湿",
+        "text": "气温较低，风力较大，用滋润型化妆品，少扑粉，用润唇膏后再抹口红。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "14",
+        "name": "晾晒指数",
+        "level": "4",
+        "category": "不太适宜",
+        "text": "天气阴沉，不利于水分的迅速蒸发，不太适宜晾晒。若需要晾晒，请尽量选择通风的地点。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "15",
+        "name": "交通指数",
+        "level": "1",
+        "category": "良好",
+        "text": "阴天，路面干燥，交通气象条件良好，车辆可以正常行驶。"
+      },
+      {
+        "date": "2026-11-07",
+        "type": "16",
+        "name": "防晒指数",
+        "level": "1",
+        "category": "弱",
+        "text": "属弱紫外辐射天气，长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"
+      }
+    ],
+    "refer": {
+      "sources": [
+        "QWeather"
+      ],
+      "license": [
+        "QWeather Developers License"
+      ]
+    }
+  },
+  "updated_at": "2026-11-07T15:33:41.827626+08:00",
+  "status": "ok",
+  "location": {
+    "name": "大连沙河口区",
+    "latitude": 38.88,
+    "longitude": 121.53
+  },
+  "units": {
+    "temperature": "℃",
+    "wind": "km/h",
+    "precipitation": "mm",
+    "probability": "%"
+  },
+  "alert_text": "未来24小时有雨、雪，最高降水概率70%、预计降水9.5毫米。 未来24小时大风：最大风速43公里/小时，阵风数据未知。 2026-11-07T21:00+08:00前后天气由阴转为小雨。",
   "alerts": {
-    "checked_at": "2026-11-07T15:13:47.175019+08:00",
-    "level": "错误",
-    "changes": [],
-    "text": "大连沙河口天气｜2026-11-07 15:13（北京时间）\n缺少环境变量 QWEATHER_API_KEY、QWEATHER_API_HOST；检查失败，无法判断重要变化，请勿沿用旧提醒。"
+    "checked_at": "2026-11-07T15:33:41.827626+08:00",
+    "level": "重要",
+    "changes": [
+      {
+        "type": "precipitation",
+        "level": "重要",
+        "score": 2,
+        "message": "未来24小时有雨、雪，最高降水概率70%、预计降水9.5毫米。"
+      },
+      {
+        "type": "wind",
+        "level": "重要",
+        "score": 1,
+        "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。"
+      },
+      {
+        "type": "转折-雨",
+        "level": "重要",
+        "score": 1,
+        "message": "2026-11-07T21:00+08:00前后天气由阴转为小雨。"
+      }
+    ],
+    "text": "大连沙河口天气｜2026-11-07 15:33（北京时间）\n未来24小时有雨、雪，最高降水概率70%、预计降水9.5毫米。 未来24小时大风：最大风速43公里/小时，阵风数据未知。 2026-11-07T21:00+08:00前后天气由阴转为小雨。"
   }
 }
