@@ -1,43 +1,23 @@
-# 大连沙河口天气抓取与变化提醒
+# 大连沙河口 · 和风天气与变化提醒
 
-坐标默认 **38.88, 121.53**。Python 3.10+，仅标准库，无需 pip 安装。`index.html` 只读取仓库 JSON，不直接请求天气接口，不持有任何认证信息。
+坐标 **38.88, 121.53**。唯一数据源为 **QWeather（和风天气）**，不使用其他天气源或旧数据兜底。Python 3.10+，仅标准库，无需安装依赖。
 
-## 电脑运行
+## Secret 安全与首次配置
+
+主人亲自在本 GitHub 仓库 **Settings → Secrets and variables → Actions** 填入 `QWEATHER_API_KEY` 与 `QWEATHER_API_HOST`。Host 使用和风控制台分配的专属 API 域名，不含协议或路径。请勿在聊天、代码、文件、日志、README、命令历史或提交中放入凭据值。程序仅从进程环境读取这两个变量，不读取 `.env`，不打印认证头、环境变量值、请求地址或原始错误响应，认证请求禁止重定向。
+
+缺少任一变量时，脚本明确输出缺少的变量名，退出码为 **1**；根目录 `weather.json` 写入 `status: error`、检查时间及错误说明，`updated_at: null`、天气数据清空。不会调用其他来源，也不会将旧数据冒充新抓取结果。其他抓取错误同样写错误状态并退出 1。
+
+## 运行与修改坐标
+
+在本仓库目录执行（本地进程的环境变量应由自己的安全环境配置注入，勿创建凭据文件）：
 
 ```sh
-git clone https://github.com/pjq3243349811/codex-sandbox.git
-cd codex-sandbox
 python3 scripts/fetch_weather.py
-python3 -m http.server 8000
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-浏览器打开 `http://localhost:8000/`。不能直接双击 HTML 使用 `file://`，浏览器会限制 fetch。页面打开立即读取 `./data/weather.json` 和 `./data/alerts.json`，每 **10 分钟**带时间戳、禁用缓存重新拉取；显示最后更新时间、数据来源、倒计时和实况时间。后台数据或实况超过 **3 小时**会警告，文件缺失和读取失败会明确提示。前台刷新不触发天气抓取。也可在 GitHub Settings → Pages 中选择默认分支根目录发布（私有仓库能否使用 Pages 取决于账号方案）。
-
-## 安卓 Termux
-
-```sh
-pkg update
-pkg install python git
-git clone https://github.com/pjq3243349811/codex-sandbox.git
-cd codex-sandbox
-python scripts/fetch_weather.py
-python -m http.server 8000 --bind 127.0.0.1
-```
-
-用安卓浏览器打开 `http://127.0.0.1:8000/`。Termux 必须保持运行；安卓省电和后台限制可能中断本地定时任务，推荐让 Actions 承担稳定后台更新。
-
-## 数据源与 Secret 安全
-
-主人亲自在 GitHub 本仓库 **Settings → Secrets and variables → Actions → New repository secret** 中添加：
-
-- `QWEATHER_API_KEY`：和风 API 密钥。
-- `QWEATHER_API_HOST`：账号专属 API Host，使用账号控制台给出的 `re.qweatherapi.com` 域名（如有专属前缀须保留），不含 `https://`、路径或斜杠。
-
-**不要在聊天中发送密钥，不要将密钥写到任何代码、文件、README、日志或提交中。** 本地运行时仅通过安全的进程环境注入这两个变量，不在命令行参数中传密钥，也不要创建 `.env` 文件。脚本不打印环境变量、请求头、接口错误详情或响应体。认证头禁止随重定向发送。
-
-Secret 未填完整时自动使用免费免密钥 **Open-Meteo**；填完后下次 Actions 自动优先使用 **QWeather**，无需改代码。和风实况、24 小时和 3 天预报为核心；分钟降水、空气质量、生活指数按权限和覆盖尽力获取，可选接口不可用不会阻断核心预报。核心和风接口失败时也自动兜底。数据中 `source` 明确为 `qweather` 或 `open-meteo`，`fallback_reason` 和 `limitations` 解释降级情况。未知值为 `null`，页面显示“未知”，绝不当成 0。Open-Meteo 实况为模型估计，非本地气象站直接测量。
-
-## 坐标与定时更新
+浏览器打开 `http://127.0.0.1:8000/`。安卓 Termux 先执行 `pkg install python git`，进入仓库后用同样命令运行。安卓后台省电可能停止任务，持续更新建议使用 GitHub Actions。
 
 临时修改坐标：
 
@@ -45,32 +25,41 @@ Secret 未填完整时自动使用免费免密钥 **Open-Meteo**；填完后下�
 python3 scripts/fetch_weather.py --latitude 38.88 --longitude 121.53
 ```
 
-长期修改脚本参数默认值或工作流运行参数；地点改到大连以外时，同时修改地点名称和页面标题。修改坐标后状态基线自动重置。也可用 `--data-dir` 指定输出目录。
+长期修改脚本默认参数或工作流运行参数。改到其他地区还需修改地点名称和网页标题。坐标变化会重置去重基线。`--data-dir` 仅指定内部状态和兼容提醒目录，天气始终写入仓库根目录 `weather.json`。
 
-Actions 工作流 `.github/workflows/weather.yml` 每小时 **UTC 第 17 分钟**运行一次（北京时间同为每小时第 17 分钟），并支持 Actions 页面“Run workflow”手动执行；脚本或工作流推送也触发一次验证。工作流使用 `GITHUB_TOKEN` 提交 `data/` 内输出，权限仅 `contents: write`，同一分支串行运行。需在仓库 Actions 设置允许工作流读写内容；分支保护若禁止机器人直推，需按仓库规则允许数据更新或改用单独数据分支。**定时工作流仅在默认分支生效**；GitHub 调度可能延迟，公开仓库长期无活动可能被自动停用。新增的脚本推送到分支也会执行一次，合入默认分支后开始定时运行。
+## 输出与网页
 
-电脑可用 `crontab -e`（换成自己的绝对仓库路径）：
+- **`weather.json`**：唯一网页数据文件，含 `source: qweather`、`status`、最后成功抓取时间 `updated_at`、实况 `current`、24小时 `hourly`、3天 `daily`、分钟降水 `minute`、空气质量 `air`、生活指数 `indices`、中文风险摘要 `alert_text` 及去重提醒 `alerts`。
+- `data/state.json`：风险档位和已通知时间，仅作为内部比较基线，不用于网页展示。
+- `data/alerts.json` / `data/latest_alert.txt`：兼容原 Muse 文件出口，每次检查覆盖，失败时明确报错。
+
+核心实况、逐小时、逐日接口必须成功且预报完整；生活指数、分钟降水和空气质量每次均尝试抓取，权限或区域不支持时标为 `null`，并在 `limitations` 明确说明。和风未提供的阵风、降水概率保持未知，不当作 0。
+
+`index.html` **只 fetch 根目录 `./weather.json`**，不读 `data/weather.json` 或独立提醒文件，不携带认证信息、不直接调用和风。立即加载且每 **10分钟**禁用缓存自动重拉，显示最后更新时间、来源、实况时间和刷新倒计时；超过3小时明确提示过旧。后端错误状态会清空旧显示并显示原因。文件缺失、读取异常时明确警告。须通过 HTTP 服务打开，不能直接双击使用 `file://`。
+
+也可在仓库 Settings → Pages 选择默认分支根目录发布，是否支持私有仓库取决于账号方案。
+
+## 后台更新
+
+`.github/workflows/weather.yml` 每小时第 **17分钟**运行一次，支持 Actions 页面手动 Run workflow；脚本和工作流推送也触发。Secrets 仅注入抓取步骤，`GITHUB_TOKEN` 以 `contents: write` 权限提交根目录 `weather.json` 和 `data/` 中的更新。缺少 Secret 或抓取失败时仍提交错误状态，并将工作流标红。
+
+定时仅对默认分支生效，GitHub 调度可能延迟。仓库需允许 Actions 运行和机器人写入；分支保护若限制直接提交，需按仓库规则允许数据更新。
+
+电脑可 `crontab -e` 配置（替换路径；不要将凭据值写进 crontab）：
 
 ```cron
 17 * * * * cd /absolute/path/codex-sandbox && /usr/bin/python3 scripts/fetch_weather.py
 ```
 
-Termux 可安装 `cronie`、启动 `crond`，在 `crontab -e` 中使用 Termux 的绝对仓库路径及 `command -v python` 得到的 Python 路径。不要把认证变量值写进 crontab；本地定时进程必须自行从安全环境获得变量，否则自然走免密钥兜底。同一个数据目录不要同时运行多个本地抓取进程。
+Termux 可安装 cronie 并运行 crond，使用实际仓库和 Python 绝对路径。定时进程必须从安全环境获得变量。同一个目录不要并行运行多个本地抓取进程。
 
-## 提醒规则与 Muse 文件出口
+## 中文提醒与 Muse
 
-每次成功抓取产生：
+`weather.json` 的 **`alert_text` 是当前风险摘要**：实况或未来24小时出现雨雪雷、降水概率≥60%或累计降水≥1mm；风速≥39km/h或阵风≥50km/h；未来24小时较当前降温/升温≥8℃；天气转为雨雪雷雾时生成中文提醒。最近6小时的两次实况温差≥6℃也生成变化提醒。没有风险则为“无提醒”；抓取失败则明确写无法判断，绝不伪称无提醒。
 
-- `data/weather.json`：来源、坐标、检查时间、实况、24 小时、3 天预报及可用的扩展数据；温度 ℃、风速/阵风 km/h、降水 mm、概率 %。
-- `data/state.json`：上次实况及风险档位、通知时间，用于去重，不含凭据。
-- `data/alerts.json`：`checked_at`（北京时间 ISO）、`level`、`changes`、`text`。
-- `data/latest_alert.txt`：可直接转发的中文播报文本。
+`alerts` 和兼容文件保留原来的新变化去重逻辑：新风险或升档才通知，持续风险24小时后复核，未加剧时明确“无重要变化”。`alert_text` 与去重通知用途不同：同一风险持续时前者仍展示风险，后者可能无新通知。
 
-未来 24 小时：降水概率 ≥60%、累计降水 ≥1 mm 或雨雪雷天气；风速 ≥39 km/h 或阵风 ≥50 km/h；较当前降温/升温 ≥8℃；天气转为雨雪雷雾时提醒。最近 6 小时内两次实况温差 ≥6℃也提醒。风险升档阈值包括降水概率 80%、累计降水 10 mm、雪/雷，风速 50/62 或阵风 62/75 km/h，温变按 4℃分档。风险首次出现或明显升档才播报；持续风险 24 小时后复核提醒；风险消失后再次出现可重新提醒。切换数据源时重建风险基线。已知风险未加剧时明确写 **“无重要变化”**，并不表示全天无风无雨。
-
-**Muse 会定期读取 codex-sandbox 仓库里的 `data/latest_alert.txt` / `data/alerts.json`，有新提醒就转达给主人。** 这是已落地的文件出口，不新增推送服务。Muse 端需配置读取默认分支最新文件（私有仓库使用 Muse 已有的仓库访问能力）；以 `checked_at` 记录已处理检查，只在 `level=重要` 且 `changes` 非空时转达 `text`。正常检查同样覆盖两个提醒文件为“无重要变化”及本次检查时间，避免旧提醒残留。错误时写“检查失败，无法判断重要变化”，不伪称“无重要变化”；保留上次成功天气及状态，Actions 标红。可监控错误级别和检查时间，避免转发过期提醒。本项目未替 Muse 创建外部轮询任务。
-
-首次运行没有历史基线，仍会报告当前预报中的重要风险；这是辅助提醒，不替代气象台预警。
+Muse 后续可读取根目录 `weather.json` 的 `alert_text`；原有出口 `data/latest_alert.txt` / `data/alerts.json` 继续可用。按检查时间去重，只有抓取成功且有提醒时转达；错误状态不得转发成天气提醒。本仓库没有新增付费推送服务，也没有替 Muse 建立外部轮询任务。
 
 ## 验证
 
@@ -79,4 +68,4 @@ python3 -m unittest discover -s tests -v
 python3 scripts/fetch_weather.py
 ```
 
-自动化测试覆盖无变化、雨雪与温变、大风升档、重复去重、风险解除、和风可选接口失败及抓取失败覆盖旧提醒。接口请求有超时及最多三次重试；所有数据写入单文件原子替换。前端还检测提醒和天气的时间一致性。网络失败退出码为 1，成功为 0。
+测试使用天气响应模拟数据，不需要任何认证值；覆盖提醒、去重、升档、扩展接口不可用和缺少环境变量时的错误输出。真实抓取必须由主人配置 Secrets 后在 Actions 运行验证。

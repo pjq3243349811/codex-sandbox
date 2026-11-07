@@ -10,7 +10,7 @@
 <section><h2>未来 24 小时</h2><div class="scroll"><table><thead><tr><th>北京时间</th><th>天气</th><th>温度</th><th>风速 / 阵风</th><th>降水概率</th><th>降水量</th></tr></thead><tbody id="hourly"></tbody></table></div></section>
 <section><h2>未来 3 天</h2><div id="daily"></div></section>
 <section><h2>更多天气信息</h2><p id="limitations" class="muted"></p><details><summary>分钟降水 · 空气质量 · 生活指数</summary><pre id="extras">等待数据</pre></details></section>
-<footer class="muted">数据来源：和风天气 / <a href="https://open-meteo.com/">Open-Meteo</a>。所有时间为北京时间，风速单位 km/h。页面仅读取本仓库数据。</footer>
+<footer class="muted">数据来源：和风天气（QWeather）。所有时间为北京时间，风速单位 km/h。页面仅读取本仓库数据。</footer>
 </main><script>
 const $=id=>document.getElementById(id), period=600000;
 let next=Date.now()+period,busy=false,latest=null,lastAlerts=null;
@@ -18,11 +18,11 @@ const fmt=(v,u='')=>v===null||v===undefined?'未知':`${v}${u}`;
 const date=s=>new Date(s).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false});
 function cellRow(values){const tr=document.createElement('tr');for(const value of values){const td=document.createElement('td');td.textContent=value;tr.append(td)}return tr}
 function health(){if(!latest)return;const age=Date.now()-Date.parse(latest.updated_at), obs=Date.now()-Date.parse(latest.current.time);const warnings=[];if(!Number.isFinite(age)||age>3*3600000||obs>3*3600000)warnings.push('⚠ 数据已过旧，暂不可用于实时决策。请检查后台更新。');if(lastAlerts&&lastAlerts.level==='错误')warnings.push(lastAlerts.text);$('status').textContent=warnings.join('\n')}
-async function read(path){const r=await fetch(`./data/${path}?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw Error('missing');return r.json()}
-async function refresh(){if(busy)return;busy=true;$('refresh').disabled=true;try{const [w,a]=await Promise.all([read('weather.json'),read('alerts.json')]);if(!w.current||!Array.isArray(w.hourly)||!Number.isFinite(Date.parse(w.updated_at)))throw Error('invalid');latest=w;lastAlerts=a;$('meta').textContent=`最后更新：${date(w.updated_at)} · 数据来源：${w.source} · ${w.fallback_reason||'和风天气'}`;
+async function read(path){const r=await fetch(`./${path}?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw Error('missing');return r.json()}
+async function refresh(){if(busy)return;busy=true;$('refresh').disabled=true;try{const w=await read('weather.json');if(w.status!=='ok'){latest=null;lastAlerts=null;for(const id of ['temperature','condition','observed','wind','gust','probability','rain','extras','limitations'])$(id).textContent='—';$('hourly').replaceChildren();$('daily').replaceChildren();$('meta').textContent=`数据来源：和风天气 · 最后成功更新时间：暂无可用数据 · 最近检查：${date(w.checked_at)}`;$('status').textContent=w.error||'和风天气抓取失败';$('alerts').textContent=w.alert_text||'检查失败，无法判断提醒';return;}const a=w.alerts;if(!w.current||!Array.isArray(w.hourly)||!Number.isFinite(Date.parse(w.updated_at)))throw Error('invalid');latest=w;lastAlerts=a;$('meta').textContent=`最后更新：${date(w.updated_at)} · 数据来源：${w.source} · 和风天气`;
 $('temperature').textContent=fmt(w.current.temperature,'℃');$('condition').textContent=w.current.text;$('observed').textContent=`实况时间：${date(w.current.time)}`;
 for(const [id,key,unit] of [['wind','wind_speed',' km/h'],['gust','gust',' km/h'],['probability','probability','%'],['rain','precipitation',' mm']])$(id).textContent=fmt(w.current[key],unit);
-$('alerts').textContent=a.text;if(Math.abs(Date.parse(a.checked_at)-Date.parse(w.updated_at))>180000)$('alerts').textContent+='\n⚠ 提醒与天气数据时间不一致，请以检查时间为准。';
+$('alerts').textContent=w.alert_text+'\n'+a.text;if(Math.abs(Date.parse(a.checked_at)-Date.parse(w.updated_at))>180000)$('alerts').textContent+='\n⚠ 提醒与天气数据时间不一致，请以检查时间为准。';
 $('hourly').replaceChildren(...w.hourly.map(r=>cellRow([date(r.time),r.text,fmt(r.temperature,'℃'),`${fmt(r.wind_speed)} / ${fmt(r.gust)} km/h`,fmt(r.probability,'%'),fmt(r.precipitation,' mm')])));
 $('daily').replaceChildren(...w.daily.map(r=>{const article=document.createElement('article');article.textContent=`${r.date} · ${r.text} · ${fmt(r.temp_min)}～${fmt(r.temp_max)}℃ · 降水 ${fmt(r.precipitation,' mm')} / ${fmt(r.probability,'%')}`;return article}));
 $('limitations').textContent=w.limitations.join('；');$('extras').textContent=JSON.stringify({分钟降水:w.minute||'暂不可用',空气质量:w.air||'暂不可用',生活指数:w.indices||'暂不可用'},null,2);health();
