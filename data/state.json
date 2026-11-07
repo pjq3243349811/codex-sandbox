@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-11-07T15:08:17.500600+08:00",
+  "source": "open-meteo",
+  "current": {
+    "time": "2026-11-07T15:00+08:00",
+    "temperature": 5.7,
+    "text": "阴",
+    "wind_speed": 12.4,
+    "gust": 31.0,
+    "precipitation": 0.0,
+    "probability": null
+  },
+  "risks": {
+    "precipitation": {
+      "score": 3,
+      "message": "未来24小时有雨、雪，最高降水概率96%、预计降水7.0毫米。",
+      "notified_at": "2026-11-07T15:08:17.500600+08:00"
+    },
+    "转折-雨": {
+      "score": 1,
+      "message": "2026-11-07T17:00+08:00前后天气由阴转为雨。",
+      "notified_at": "2026-11-07T15:08:17.500600+08:00"
+    }
+  },
+  "location": {
+    "name": "大连沙河口区",
+    "latitude": 38.88,
+    "longitude": 121.53
+  }
+}
