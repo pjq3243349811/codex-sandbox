@@ -42,40 +42,85 @@ def number(value):
     except (TypeError, ValueError):
         return None
 
-def qweather(lat, lon):
+LAYERS = {'fast': ('current', 'minute'), 'medium': ('hourly', 'air'), 'slow': ('daily', 'indices')}
+
+def slot(layer, now):
+    now = now.astimezone(TZ)
+    if layer == 'fast': return now.replace(minute=now.minute//10*10, second=0, microsecond=0).isoformat()
+    if layer == 'medium': return now.replace(minute=0, second=0, microsecond=0).isoformat()
+    anchor = now.replace(hour=5, minute=50, second=0, microsecond=0)
+    return (anchor + timedelta(hours=6 * int((now-anchor).total_seconds()//21600))).isoformat()
+
+def client():
     host = os.environ['QWEATHER_API_HOST'].strip()
     if not re.fullmatch(r'(?:[a-zA-Z0-9-]+\.)*re\.qweatherapi\.com', host):
-        raise RuntimeError('QWEATHER_API_HOST 必须为账号的 re.qweatherapi.com 域名，不含协议或路径')
+        raise RuntimeError('和风配置无效')
     def query(path, params=None):
         obj = get('https://' + host + path, params, {'X-QW-Api-Key': os.environ['QWEATHER_API_KEY']})
         if str(obj.get('code', '200')) != '200' or 'error' in obj:
             raise RuntimeError('和风接口不可用或无权限')
         return obj
-    return qweather_data(query, lat, lon)
+    return query
 
-def qweather_data(query, lat, lon):
+def fetch_field(query, name, lat, lon, now):
     loc = {'location': f'{lon},{lat}', 'lang': 'zh'}
     def row(r):
         return dict(time=r.get('obsTime', r.get('fxTime')), temperature=number(r.get('temp')),
                     text=r.get('text', '未知'), wind_speed=number(r.get('windSpeed')),
                     gust=number(r.get('windGust')), precipitation=number(r.get('precip')),
                     probability=number(r.get('pop')))
-    current = row(query('/v7/weather/now', loc)['now'])
-    hourly = [row(r) for r in query('/v7/weather/24h', loc)['hourly']][:24]
-    daily = [dict(date=r['fxDate'], text=r['textDay'], temp_min=number(r['tempMin']),
-                  temp_max=number(r['tempMax']), precipitation=number(r.get('precip')), probability=None)
-             for r in query('/v7/weather/3d', loc)['daily']][:3]
-    result = dict(source='qweather', current=current, hourly=hourly, daily=daily, limitations=[])
-    for name, path, params in [
-        ('minute', '/v7/minutely/5m', loc),
-        ('air', f'/airquality/v1/current/{lat}/{lon}', None),
-        ('indices', '/v7/indices/1d', {**loc, 'type': '0'})]:
-        try: result[name] = query(path, params)
-        except RuntimeError:
-            result[name] = None
-            result['limitations'].append(name + '暂不可用（权限、覆盖或网络限制）')
-    result['limitations'].append('接口未提供的阵风或降水概率显示为未知，不以零代替')
-    return result
+    if name == 'current':
+        result = row(query('/v7/weather/now', loc)['now'])
+        if abs((now-datetime.fromisoformat(result['time'])).total_seconds()) > 10800:
+            raise RuntimeError('实况已过旧')
+        return result
+    if name == 'hourly':
+        result = [row(r) for r in query('/v7/weather/24h', loc)['hourly']][:24]
+        if len(result) != 24: raise RuntimeError('逐小时预报不完整')
+        return result
+    if name == 'daily':
+        result = [dict(date=r['fxDate'], text=r['textDay'], temp_min=number(r['tempMin']),
+                       temp_max=number(r['tempMax']), precipitation=number(r.get('precip')), probability=None)
+                  for r in query('/v7/weather/3d', loc)['daily']][:3]
+        if len(result) != 3: raise RuntimeError('逐日预报不完整')
+        return result
+    paths = {'minute': ('/v7/minutely/5m', loc),
+             'air': (f'/airquality/v1/current/{lat}/{lon}', None),
+             'indices': ('/v7/indices/1d', {**loc, 'type': '0'})}
+    return query(*paths[name])
+
+def refresh_layers(weather, query, lat, lon, now, config_error=None):
+    import copy
+    weather = copy.deepcopy(weather)
+    layers = weather.setdefault('layers', {})
+    fields = weather.setdefault('fields', {})
+    for layer, names in LAYERS.items():
+        meta = layers.setdefault(layer, {})
+        current_slot = slot(layer, now)
+        if meta.get('slot') == current_slot: continue
+        meta.update(slot=current_slot, checked_at=now.isoformat())
+        errors = []
+        for name in names:
+            field = fields.setdefault(name, {})
+            field['checked_at'] = now.isoformat()
+            try:
+                if config_error: raise RuntimeError(config_error)
+                weather[name] = fetch_field(query, name, lat, lon, now)
+                field.update(status='ok', updated_at=now.isoformat(), error=None)
+            except Exception:
+                field.update(status='error', error=config_error or '和风接口抓取失败（网络、权限或数据异常）；保留值为历史数据')
+                errors.append(name)
+        meta.update(status='error' if errors else 'ok', failed_fields=errors)
+        if not errors: meta['updated_at'] = now.isoformat()
+    weather.update(source='qweather', checked_at=now.isoformat(),
+                   location={'name':'大连沙河口区','latitude':lat,'longitude':lon},
+                   units={'temperature':'℃','wind':'km/h','precipitation':'mm','probability':'%'})
+    failures = [name for name, field in fields.items() if field['status'] == 'error']
+    weather['status'] = 'error' if failures else 'ok'
+    weather['error'] = (config_error or '以下字段抓取失败，保留值仅为历史数据：' + '、'.join(failures)) if failures else None
+    weather['updated_at'] = fields.get('current', {}).get('updated_at')
+    weather['limitations'] = ['接口未提供的值显示为未知；每层及字段更新时间独立记录']
+    return weather
 
 def category(text):
     for word in ('雷', '雪', '雨', '雾'):
@@ -94,6 +139,9 @@ def detect(weather, previous, now):
     if prob >= 60 or amount >= 1 or wet:
         add('precipitation', 1 + int(prob >= 80) + int(amount >= 10) + int('雪' in wet or '雷' in wet),
             f'未来24小时有{"、".join(sorted(wet)) or "降水风险"}，最高降水概率{prob:g}%、预计降水{amount:.1f}毫米。' if any(r.get('probability') is not None for r in rows) else f'未来24小时有{"、".join(sorted(wet)) or "降水"}，预计降水{amount:.1f}毫米，概率未知。')
+    minute_amount = sum(number(r.get('precip')) or 0 for r in (weather.get('minute') or {}).get('minutely', []))
+    if minute_amount > 0:
+        add('分钟降水', 1 + int(minute_amount >= 5), f'未来两小时分钟预报有降水，合计约{minute_amount:.1f}毫米，请留意雨雪。')
     wind = max((r.get('wind_speed') or 0 for r in rows), default=0)
     gust = max((r.get('gust') or 0 for r in rows), default=0)
     if wind >= 39 or gust >= 50:
@@ -142,41 +190,43 @@ def main():
         previous = json.loads((folder/'state.json').read_text(encoding='utf-8'))
     except (OSError, ValueError): previous = {}
     try:
-        missing = [name for name in ('QWEATHER_API_KEY', 'QWEATHER_API_HOST')
-                   if not os.environ.get(name, '').strip()]
-        if missing:
-            raise RuntimeError('缺少环境变量 ' + '、'.join(missing))
-        weather = qweather(args.latitude, args.longitude)
-        if len(weather['hourly']) < 24 or len(weather['daily']) < 3: raise RuntimeError('预报数据不完整')
-        if now - datetime.fromisoformat(weather['current']['time']) > timedelta(hours=3): raise RuntimeError('接口实况数据已过旧')
-        weather.update(updated_at=now.isoformat(), status='ok', location={'name':'大连沙河口区', 'latitude':args.latitude, 'longitude':args.longitude}, units={'temperature':'℃', 'wind':'km/h', 'precipitation':'mm', 'probability':'%'})
-        if previous.get('location') != weather['location']: previous = {}
-        alerts, state = detect(weather, previous, now)
-        state['location'] = weather['location']
-        # alert_text 为当前风险摘要，changes/text 则保持新变化去重语义。
-        summary, _ = detect(weather, {}, now)
+        weather = json.loads((ROOT/'weather.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError): weather = {}
+    if weather.get('location', {}).get('latitude') != args.latitude or weather.get('location', {}).get('longitude') != args.longitude or weather.get('source') != 'qweather':
+        weather, previous = {}, {}
+    missing = [name for name in ('QWEATHER_API_KEY', 'QWEATHER_API_HOST') if not os.environ.get(name, '').strip()]
+    config_error = '缺少环境变量 ' + '、'.join(missing) if missing else None
+    query = None
+    if not config_error:
+        try: query = client()
+        except Exception: config_error = '和风配置无效，请检查环境变量 QWEATHER_API_KEY、QWEATHER_API_HOST'
+    weather = refresh_layers(weather, query, args.latitude, args.longitude, now, config_error)
+    current_meta = weather['fields'].get('current', {})
+    usable = current_meta.get('status') == 'ok' and weather.get('current') and now-datetime.fromisoformat(current_meta['updated_at']) < timedelta(hours=3)
+    if usable:
+        # 仅使用有效、尚未过期且时间在未来的预报生成提醒。
+        view = dict(weather)
+        hourly_meta = weather['fields'].get('hourly', {})
+        view['hourly'] = [r for r in weather.get('hourly', []) if datetime.fromisoformat(r['time']) >= now] if hourly_meta.get('status') == 'ok' and now-datetime.fromisoformat(hourly_meta['updated_at']) < timedelta(hours=3) else []
+        minute_meta = weather['fields'].get('minute', {})
+        if minute_meta.get('status') != 'ok' or now-datetime.fromisoformat(minute_meta['updated_at']) > timedelta(minutes=30): view['minute'] = None
+        alerts, state = detect(view, previous, now)
+        summary, _ = detect(view, {}, now)
         messages = dict.fromkeys(c['message'] for c in summary['changes'] + alerts['changes'])
         weather['alert_text'] = ' '.join(messages) or '无提醒'
-        weather['alerts'] = alerts
-        write(ROOT/'weather.json', weather)
+        state['location'] = weather['location']
         write(folder/'state.json', state)
-        write(folder/'alerts.json', alerts)
-        write(folder/'latest_alert.txt', alerts['text'] + '\n')
-        print(alerts['text'])
-        return 0
-    except Exception:
-        missing = [name for name in ('QWEATHER_API_KEY', 'QWEATHER_API_HOST')
-                   if not os.environ.get(name, '').strip()]
-        error = ('缺少环境变量 ' + '、'.join(missing)) if missing else '和风天气抓取失败（配置、网络、权限或数据异常）'
-        # 不输出异常、URL、响应体，避免任何认证信息进入日志。
-        alert = dict(checked_at=now.isoformat(), level='错误', changes=[], text=f'大连沙河口天气｜{now:%Y-%m-%d %H:%M}（北京时间）\n{error}；检查失败，无法判断重要变化，请勿沿用旧提醒。')
-        # 失败状态不包含任何旧天气，不刷新最后成功更新时间。
-        write(ROOT/'weather.json', dict(source='qweather', status='error', updated_at=None,
-              checked_at=now.isoformat(), error=error, current=None, hourly=[], daily=[],
-              minute=None, air=None, indices=None, alert_text='检查失败，无法判断提醒', alerts=alert))
-        write(folder/'alerts.json', alert)
-        write(folder/'latest_alert.txt', alert['text']+'\n')
-        print(alert['text'], file=sys.stderr)
-        return 1
+    else:
+        alerts = dict(checked_at=now.isoformat(), level='错误', changes=[], text='检查失败，无法判断重要变化；请勿沿用历史天气。')
+        weather['alert_text'] = '检查失败，无法判断提醒'
+    if weather['status'] == 'error':
+        alerts['text'] += '\n' + weather['error']
+        if alerts['level'] == '正常': alerts['level'] = '错误'
+    weather['alerts'] = alerts
+    write(ROOT/'weather.json', weather)
+    write(folder/'alerts.json', alerts)
+    write(folder/'latest_alert.txt', alerts['text']+'\n')
+    print(alerts['text'])
+    return 1 if weather['status'] == 'error' else 0
 
 if __name__ == '__main__': sys.exit(main())

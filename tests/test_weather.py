@@ -38,50 +38,82 @@ class WeatherTests(unittest.TestCase):
         self.assertIn('雪', a['text'])
         self.assertIn('概率未知', a['text'])
 
-    def test_optional_qweather_failures(self):
-        def fake(url, params=None):
-            if '/weather/now' in url: return {'code':'200','now':{'obsTime':self.now.isoformat(),'temp':'15','text':'晴','windSpeed':'8'}}
-            if '/weather/24h' in url: return {'code':'200','hourly':[{'fxTime':self.now.isoformat(),'temp':'15','text':'晴','windSpeed':'8'}]*24}
-            if '/weather/3d' in url: return {'code':'200','daily':[{'fxDate':'2026-11-07','textDay':'晴','tempMin':'5','tempMax':'15'}]*3}
-            raise RuntimeError('optional unavailable')
-        result=w.qweather_data(fake,38.88,121.53)
-        self.assertEqual(result['source'], 'qweather')
-        self.assertIsNone(result['air'])
-        self.assertIsNone(result['current']['gust'])
+    def fake_field(self, query, name, lat, lon, now):
+        if name == 'current': return self.weather['current']
+        if name == 'hourly': return self.weather['hourly']
+        if name == 'daily': return [dict(date='2026-11-07')]*3
+        return {'test': name}
 
-    def test_failure_overwrites_alert_without_destroying_state(self):
+    def run_layers(self, weather, now):
+        with patch.object(w,'fetch_field',side_effect=self.fake_field) as fetch:
+            result=w.refresh_layers(weather, None,38.88,121.53,now)
+            return result,[c.args[1] for c in fetch.call_args_list]
+
+    def test_layer_slots_and_merge(self):
+        weather,calls=self.run_layers({},self.now)
+        self.assertEqual(len(calls),6) # 首次建立各层基线
+        weather,calls=self.run_layers(weather,self.now+timedelta(minutes=10))
+        self.assertEqual(calls,['current','minute'])
+        self.assertEqual(weather['hourly'],self.weather['hourly'])
+        self.assertEqual(weather['layers']['medium']['updated_at'],self.now.isoformat())
+        weather,calls=self.run_layers(weather,self.now+timedelta(hours=1))
+        self.assertEqual(calls,['current','minute','hourly','air'])
+        weather,calls=self.run_layers(weather,self.now.replace(hour=17,minute=50))
+        self.assertEqual(calls,['current','minute','hourly','air','daily','indices'])
+        _,calls=self.run_layers(weather,self.now.replace(hour=17,minute=51))
+        self.assertEqual(calls,[])
+
+    def test_failure_preserves_other_layers_and_timestamps(self):
+        weather,_=self.run_layers({},self.now)
+        def fail(query,name,lat,lon,now):
+            if name=='minute': raise RuntimeError()
+            return self.fake_field(query,name,lat,lon,now)
+        with patch.object(w,'fetch_field',side_effect=fail):
+            failed=w.refresh_layers(weather,None,38.88,121.53,self.now+timedelta(minutes=10))
+        self.assertEqual(failed['hourly'],weather['hourly'])
+        self.assertEqual(failed['minute'],weather['minute'])
+        self.assertEqual(failed['fields']['minute']['updated_at'],self.now.isoformat())
+        self.assertEqual(failed['fields']['minute']['status'],'error')
+        self.assertEqual(failed['status'],'error')
+        _,calls=self.run_layers(failed,self.now+timedelta(minutes=11))
+        self.assertEqual(calls,[]) # 同时段失败也不会反复调慢层
+
+    def test_six_endpoint_mapping(self):
+        calls=[]
+        def query(path, params=None):
+            calls.append(path)
+            row={'obsTime':self.now.isoformat(),'fxTime':self.now.isoformat(),'temp':'15','text':'晴','windSpeed':'10'}
+            return {'now':row,'hourly':[row]*24,'daily':[{'fxDate':'2026-11-07','textDay':'晴','tempMin':'5','tempMax':'15'}]*3,'minutely':[]}
+        for layer,names in w.LAYERS.items():
+            for name in names: w.fetch_field(query,name,38.88,121.53,self.now)
+        self.assertEqual(calls,['/v7/weather/now','/v7/minutely/5m','/v7/weather/24h','/airquality/v1/current/38.88/121.53','/v7/weather/3d','/v7/indices/1d'])
+
+    def test_monthly_budget(self):
+        weather={}
+        counts={name:0 for name in w.LAYERS}
+        start=self.now.replace(day=1,hour=0,minute=0)
+        for i in range(31*144):
+            now=start+timedelta(minutes=10*i)
+            weather,calls=self.run_layers(weather,now)
+            for name,names in w.LAYERS.items():
+                counts[name]+=sum(field in calls for field in names)
+        self.assertEqual(counts['fast'],8928)
+        self.assertEqual(counts['medium'],1488)
+        self.assertLessEqual(counts['slow'],250) # 首次冷启动比稳定运行多2次
+        self.assertLessEqual(sum(counts.values()),10666)
+
+    def test_missing_environment_writes_error(self):
         import tempfile
         from pathlib import Path
         with tempfile.TemporaryDirectory() as temp:
             p=Path(temp)
-            (p/'state.json').write_text('{}')
-            (p/'latest_alert.txt').write_text('old alert')
-            with patch.object(w.sys,'argv',['fetch','--data-dir',temp]), patch.object(w,'ROOT',p), patch.dict(w.os.environ,{},clear=True):
+            with patch.object(w,'ROOT',p),patch.object(w.sys,'argv',['fetch']),patch.dict(w.os.environ,{},clear=True),patch.object(w,'get') as request:
                 self.assertEqual(w.main(),1)
-            self.assertIn('检查失败', (p/'latest_alert.txt').read_text())
-            self.assertEqual((p/'state.json').read_text(),'{}')
+                request.assert_not_called()
             result=w.json.loads((p/'weather.json').read_text())
             self.assertEqual(result['status'],'error')
-            self.assertIsNone(result['current'])
             self.assertIn('QWEATHER_API_KEY',result['error'])
             self.assertIn('QWEATHER_API_HOST',result['error'])
-
-    def test_success_writes_root_weather_and_current_risk_summary(self):
-        import tempfile
-        from pathlib import Path
-        from unittest.mock import MagicMock
-        self.weather['current']['time'] = datetime.now(w.TZ).isoformat()
-        self.weather.update(daily=[{}]*3, minute=None, air=None, indices=None, limitations=[])
-        self.weather['hourly'][0].update(text='雪', temperature=2)
-        with tempfile.TemporaryDirectory() as temp:
-            root=Path(temp)
-            with patch.object(w,'ROOT',root), patch.object(w.sys,'argv',['fetch']), patch.object(w.os,'environ',MagicMock()), patch.object(w,'qweather',return_value=self.weather):
-                self.assertEqual(w.main(),0)
-            result=w.json.loads((root/'weather.json').read_text())
-            self.assertEqual(result['status'],'ok')
-            self.assertEqual(result['source'],'qweather')
-            self.assertIn('雪',result['alert_text'])
-            self.assertFalse((root/'data'/'weather.json').exists())
-            self.assertEqual(len(result['hourly']),24)
+            self.assertIsNone(result['updated_at'])
 
 if __name__ == '__main__': unittest.main()

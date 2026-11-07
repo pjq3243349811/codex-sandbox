@@ -25,7 +25,7 @@ jobs:
           python-version: '3.12'
       - name: 验证提醒逻辑
         run: python -m unittest discover -s tests -v
-      - name: 抓取并生成提醒
+      - name: 按北京时间时段分层抓取并合并提醒
         id: fetch
         continue-on-error: true
         env:
