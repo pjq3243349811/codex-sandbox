@@ -1,0 +1,31 @@
+name: Update flight reference fares
+on:
+  schedule:
+    - cron: '20 23 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: flights-data-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch cached fares or safely skip without key
+        env:
+          FLIGHT_API_KEY: ${{ secrets.FLIGHT_API_KEY }}
+        run: node flights/scripts/fetch-flights.mjs
+      - name: Commit flight data only
+        run: |
+          if ! git diff --quiet -- flights/flights-data.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add flights/flights-data.json
+            git commit -m 'chore(flights): update cached reference fares'
+            git push
+          fi
