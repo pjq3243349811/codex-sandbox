@@ -1,0 +1,208 @@
+{
+  "kind": "sample",
+  "source": "飞途人工编制示例数据（非真实班次、非实时票价）",
+  "updatedAt": "2026-11-08T09:00:00+08:00",
+  "currency": "CNY",
+  "flights": [
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ2400",
+      "departure": "08:10",
+      "durationMinutes": 220,
+      "stops": [],
+      "price": 620,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国国际航空",
+      "flightNumber": "CA2401",
+      "departure": "13:35",
+      "durationMinutes": 230,
+      "stops": [],
+      "price": 760,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国东方航空",
+      "flightNumber": "MU2402",
+      "departure": "18:20",
+      "durationMinutes": 400,
+      "stops": [
+        "XIY"
+      ],
+      "price": 500,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "海南航空",
+      "flightNumber": "HU2403",
+      "departure": "10:45",
+      "durationMinutes": 250,
+      "stops": [],
+      "price": 700,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "THQ",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ2404",
+      "departure": "08:10",
+      "durationMinutes": 240,
+      "stops": [],
+      "price": 730,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "THQ",
+      "airline": "中国国际航空",
+      "flightNumber": "CA2405",
+      "departure": "13:35",
+      "durationMinutes": 250,
+      "stops": [],
+      "price": 870,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "THQ",
+      "airline": "中国东方航空",
+      "flightNumber": "MU2406",
+      "departure": "18:20",
+      "durationMinutes": 420,
+      "stops": [
+        "XIY"
+      ],
+      "price": 610,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "THQ",
+      "airline": "海南航空",
+      "flightNumber": "HU2407",
+      "departure": "10:45",
+      "durationMinutes": 270,
+      "stops": [],
+      "price": 810,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ2408",
+      "departure": "08:10",
+      "durationMinutes": 260,
+      "stops": [],
+      "price": 710,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "中国国际航空",
+      "flightNumber": "CA2409",
+      "departure": "13:35",
+      "durationMinutes": 270,
+      "stops": [],
+      "price": 850,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "中国东方航空",
+      "flightNumber": "MU2410",
+      "departure": "18:20",
+      "durationMinutes": 440,
+      "stops": [
+        "XIY"
+      ],
+      "price": 590,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "海南航空",
+      "flightNumber": "HU2411",
+      "departure": "10:45",
+      "durationMinutes": 290,
+      "stops": [],
+      "price": 790,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "PEK",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ2412",
+      "departure": "08:10",
+      "durationMinutes": 90,
+      "stops": [],
+      "price": 380,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "PEK",
+      "airline": "中国国际航空",
+      "flightNumber": "CA2413",
+      "departure": "13:35",
+      "durationMinutes": 100,
+      "stops": [],
+      "price": 520,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "PEK",
+      "airline": "中国东方航空",
+      "flightNumber": "MU2414",
+      "departure": "18:20",
+      "durationMinutes": 270,
+      "stops": [
+        "XIY"
+      ],
+      "price": 260,
+      "cabin": "economy",
+      "date": null
+    },
+    {
+      "origin": "DLC",
+      "destination": "PEK",
+      "airline": "海南航空",
+      "flightNumber": "HU2415",
+      "departure": "10:45",
+      "durationMinutes": 120,
+      "stops": [],
+      "price": 460,
+      "cabin": "economy",
+      "date": null
+    }
+  ]
+}
