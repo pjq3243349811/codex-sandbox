@@ -1,82 +1,19 @@
 {
   "source": "qweather",
   "current": {
-    "time": "2026-11-08T15:48+08:00",
-    "temperature": -1.0,
-    "text": "中雪",
-    "wind_speed": 0.0,
+    "time": "2026-11-08T22:48+08:00",
+    "temperature": 0.0,
+    "text": "多云",
+    "wind_speed": 41.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
   },
   "hourly": [
     {
-      "time": "2026-11-08T17:00+08:00",
-      "temperature": 0.0,
-      "text": "雨夹雪",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.11,
-      "probability": 55.0
-    },
-    {
-      "time": "2026-11-08T18:00+08:00",
-      "temperature": 0.0,
-      "text": "雨夹雪",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.14,
-      "probability": 70.0
-    },
-    {
-      "time": "2026-11-08T19:00+08:00",
-      "temperature": 0.0,
-      "text": "雨夹雪",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.22,
-      "probability": 70.0
-    },
-    {
-      "time": "2026-11-08T20:00+08:00",
-      "temperature": 0.0,
-      "text": "雨夹雪",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.14,
-      "probability": 70.0
-    },
-    {
-      "time": "2026-11-08T21:00+08:00",
-      "temperature": 0.0,
-      "text": "多云",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.0,
-      "probability": 0.0
-    },
-    {
-      "time": "2026-11-08T22:00+08:00",
-      "temperature": 0.0,
-      "text": "多云",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.0,
-      "probability": 0.0
-    },
-    {
-      "time": "2026-11-08T23:00+08:00",
-      "temperature": 0.0,
-      "text": "多云",
-      "wind_speed": 43.0,
-      "gust": null,
-      "precipitation": 0.0,
-      "probability": 0.0
-    },
-    {
       "time": "2026-11-09T00:00+08:00",
-      "temperature": -1.0,
-      "text": "多云",
+      "temperature": 0.0,
+      "text": "阴",
       "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
@@ -84,8 +21,8 @@
     },
     {
       "time": "2026-11-09T01:00+08:00",
-      "temperature": -1.0,
-      "text": "多云",
+      "temperature": 0.0,
+      "text": "阴",
       "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
@@ -93,8 +30,8 @@
     },
     {
       "time": "2026-11-09T02:00+08:00",
-      "temperature": -1.0,
-      "text": "晴",
+      "temperature": 0.0,
+      "text": "阴",
       "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
@@ -103,7 +40,7 @@
     {
       "time": "2026-11-09T03:00+08:00",
       "temperature": -1.0,
-      "text": "晴",
+      "text": "阴",
       "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
@@ -111,8 +48,8 @@
     },
     {
       "time": "2026-11-09T04:00+08:00",
-      "temperature": 0.0,
-      "text": "晴",
+      "temperature": -1.0,
+      "text": "阴",
       "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
@@ -120,8 +57,8 @@
     },
     {
       "time": "2026-11-09T05:00+08:00",
-      "temperature": 2.0,
-      "text": "晴",
+      "temperature": -1.0,
+      "text": "阴",
       "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
@@ -129,17 +66,17 @@
     },
     {
       "time": "2026-11-09T06:00+08:00",
-      "temperature": 2.0,
-      "text": "晴",
-      "wind_speed": 39.0,
+      "temperature": -1.0,
+      "text": "阴",
+      "wind_speed": 43.0,
       "gust": null,
       "precipitation": 0.0,
       "probability": 0.0
     },
     {
       "time": "2026-11-09T07:00+08:00",
-      "temperature": 2.0,
-      "text": "晴",
+      "temperature": -1.0,
+      "text": "阴",
       "wind_speed": 39.0,
       "gust": null,
       "precipitation": 0.0,
@@ -147,34 +84,34 @@
     },
     {
       "time": "2026-11-09T08:00+08:00",
-      "temperature": 3.0,
-      "text": "晴",
-      "wind_speed": 36.0,
+      "temperature": 1.0,
+      "text": "阴",
+      "wind_speed": 39.0,
       "gust": null,
       "precipitation": 0.0,
       "probability": 0.0
     },
     {
       "time": "2026-11-09T09:00+08:00",
-      "temperature": 3.0,
-      "text": "晴",
-      "wind_speed": 43.0,
+      "temperature": 2.0,
+      "text": "多云",
+      "wind_speed": 36.0,
       "gust": null,
       "precipitation": 0.0,
       "probability": 0.0
     },
     {
       "time": "2026-11-09T10:00+08:00",
-      "temperature": 2.0,
-      "text": "晴",
-      "wind_speed": 46.0,
+      "temperature": 4.0,
+      "text": "多云",
+      "wind_speed": 36.0,
       "gust": null,
       "precipitation": 0.0,
       "probability": 0.0
     },
     {
       "time": "2026-11-09T11:00+08:00",
-      "temperature": 2.0,
+      "temperature": 5.0,
       "text": "晴",
       "wind_speed": 32.0,
       "gust": null,
@@ -183,7 +120,7 @@
     },
     {
       "time": "2026-11-09T12:00+08:00",
-      "temperature": 4.0,
+      "temperature": 6.0,
       "text": "晴",
       "wind_speed": 32.0,
       "gust": null,
@@ -192,7 +129,7 @@
     },
     {
       "time": "2026-11-09T13:00+08:00",
-      "temperature": 4.0,
+      "temperature": 7.0,
       "text": "晴",
       "wind_speed": 32.0,
       "gust": null,
@@ -201,7 +138,7 @@
     },
     {
       "time": "2026-11-09T14:00+08:00",
-      "temperature": 4.0,
+      "temperature": 7.0,
       "text": "晴",
       "wind_speed": 32.0,
       "gust": null,
@@ -210,7 +147,7 @@
     },
     {
       "time": "2026-11-09T15:00+08:00",
-      "temperature": 3.0,
+      "temperature": 7.0,
       "text": "晴",
       "wind_speed": 32.0,
       "gust": null,
@@ -219,7 +156,70 @@
     },
     {
       "time": "2026-11-09T16:00+08:00",
-      "temperature": 3.0,
+      "temperature": 7.0,
+      "text": "晴",
+      "wind_speed": 32.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T17:00+08:00",
+      "temperature": 6.0,
+      "text": "晴",
+      "wind_speed": 32.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T18:00+08:00",
+      "temperature": 6.0,
+      "text": "晴",
+      "wind_speed": 28.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T19:00+08:00",
+      "temperature": 6.0,
+      "text": "晴",
+      "wind_speed": 28.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T20:00+08:00",
+      "temperature": 6.0,
+      "text": "晴",
+      "wind_speed": 28.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T21:00+08:00",
+      "temperature": 6.0,
+      "text": "晴",
+      "wind_speed": 32.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T22:00+08:00",
+      "temperature": 5.0,
+      "text": "晴",
+      "wind_speed": 32.0,
+      "gust": null,
+      "precipitation": 0.0,
+      "probability": 0.0
+    },
+    {
+      "time": "2026-11-09T23:00+08:00",
+      "temperature": 5.0,
       "text": "晴",
       "wind_speed": 32.0,
       "gust": null,
@@ -240,7 +240,7 @@
       "date": "2026-11-09",
       "text": "晴",
       "temp_min": 1.0,
-      "temp_max": 10.0,
+      "temp_max": 9.0,
       "precipitation": 0.0,
       "probability": null
     },
@@ -248,7 +248,7 @@
       "date": "2026-11-10",
       "text": "晴",
       "temp_min": 9.0,
-      "temp_max": 14.0,
+      "temp_max": 13.0,
       "precipitation": 0.0,
       "probability": null
     }
@@ -258,128 +258,128 @@
   ],
   "minute": {
     "code": "200",
-    "updateTime": "2026-11-08T15:50+08:00",
+    "updateTime": "2026-11-08T22:55+08:00",
     "fxLink": "https://www.qweather.com",
-    "summary": "降雪还将持续120分钟",
+    "summary": "5分钟后开始下中雪，75分钟后就停了",
     "minutely": [
       {
-        "fxTime": "2026-11-08T15:50+08:00",
+        "fxTime": "2026-11-08T22:55+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-08T23:00+08:00",
         "precip": "0.10",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T15:55+08:00",
-        "precip": "0.10",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:00+08:00",
-        "precip": "0.07",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:05+08:00",
-        "precip": "0.07",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:10+08:00",
-        "precip": "0.07",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:15+08:00",
-        "precip": "0.07",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:20+08:00",
+        "fxTime": "2026-11-08T23:05+08:00",
         "precip": "0.08",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T16:25+08:00",
-        "precip": "0.07",
+        "fxTime": "2026-11-08T23:10+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T16:30+08:00",
-        "precip": "0.08",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:35+08:00",
-        "precip": "0.08",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:40+08:00",
-        "precip": "0.08",
-        "type": "snow"
-      },
-      {
-        "fxTime": "2026-11-08T16:45+08:00",
+        "fxTime": "2026-11-08T23:15+08:00",
         "precip": "0.10",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T16:50+08:00",
+        "fxTime": "2026-11-08T23:20+08:00",
         "precip": "0.10",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T16:55+08:00",
+        "fxTime": "2026-11-08T23:25+08:00",
         "precip": "0.10",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:00+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-08T23:30+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:05+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-08T23:35+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:10+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-08T23:40+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:15+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-08T23:45+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:20+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-08T23:50+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:25+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-08T23:55+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:30+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-09T00:00+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:35+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-09T00:05+08:00",
+        "precip": "0.00",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:40+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-09T00:10+08:00",
+        "precip": "0.04",
         "type": "snow"
       },
       {
-        "fxTime": "2026-11-08T17:45+08:00",
-        "precip": "0.10",
+        "fxTime": "2026-11-09T00:15+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:20+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:25+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:30+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:35+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:40+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:45+08:00",
+        "precip": "0.00",
+        "type": "snow"
+      },
+      {
+        "fxTime": "2026-11-09T00:50+08:00",
+        "precip": "0.00",
         "type": "snow"
       }
     ],
@@ -394,7 +394,7 @@
   },
   "air": {
     "metadata": {
-      "tag": "ef0839989b8c778aa65eacb18080790e622e4db71986f72bd8a191490bcd9d80",
+      "tag": "8c4481dd710bbf2f8515a71f0ff70547a309fcf0733a1ba93881c6f5efd8b8e8",
       "attributions": [
         "https://developer.qweather.com/attribution.html"
       ]
@@ -403,26 +403,22 @@
       {
         "code": "cn-mee",
         "name": "AQI (CN)",
-        "aqi": 86,
-        "aqiDisplay": "86",
-        "level": "2",
-        "category": "良",
+        "aqi": 44,
+        "aqiDisplay": "44",
+        "level": "1",
+        "category": "优",
         "color": {
-          "red": 255,
-          "green": 255,
+          "red": 0,
+          "green": 228,
           "blue": 0,
           "alpha": 1
         },
-        "primaryPollutant": {
-          "code": "pm2p5",
-          "name": "PM 2.5",
-          "fullName": "细颗粒物（PM2.5）"
-        },
+        "primaryPollutant": null,
         "health": {
-          "effect": "空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。",
+          "effect": "空气质量令人满意，基本无空气污染。",
           "advice": {
-            "generalPopulation": "一般人群可正常活动。",
-            "sensitivePopulation": "极少数异常敏感人群应减少户外活动。"
+            "generalPopulation": "各类人群可正常活动。",
+            "sensitivePopulation": "各类人群可正常活动。"
           }
         }
       }
@@ -433,14 +429,14 @@
         "name": "PM 2.5",
         "fullName": "细颗粒物（PM2.5）",
         "concentration": {
-          "value": 53.0,
+          "value": 30.0,
           "unit": "μg/m³"
         },
         "subIndexes": [
           {
             "code": "cn-mee",
-            "aqi": 86,
-            "aqiDisplay": "86"
+            "aqi": 44,
+            "aqiDisplay": "44"
           }
         ]
       },
@@ -449,14 +445,14 @@
         "name": "PM 10",
         "fullName": "可吸入颗粒物（PM10）",
         "concentration": {
-          "value": 59.0,
+          "value": 36.0,
           "unit": "μg/m³"
         },
         "subIndexes": [
           {
             "code": "cn-mee",
-            "aqi": 57,
-            "aqiDisplay": "57"
+            "aqi": 36,
+            "aqiDisplay": "36"
           }
         ]
       },
@@ -465,14 +461,14 @@
         "name": "NO2",
         "fullName": "二氧化氮",
         "concentration": {
-          "value": 31.0,
+          "value": 15.0,
           "unit": "μg/m³"
         },
         "subIndexes": [
           {
             "code": "cn-mee",
-            "aqi": 16,
-            "aqiDisplay": "16"
+            "aqi": 8,
+            "aqiDisplay": "8"
           }
         ]
       },
@@ -481,14 +477,14 @@
         "name": "O3",
         "fullName": "臭氧",
         "concentration": {
-          "value": 41.0,
+          "value": 67.0,
           "unit": "μg/m³"
         },
         "subIndexes": [
           {
             "code": "cn-mee",
-            "aqi": 13,
-            "aqiDisplay": "13"
+            "aqi": 21,
+            "aqiDisplay": "21"
           }
         ]
       },
@@ -497,7 +493,7 @@
         "name": "SO2",
         "fullName": "二氧化硫",
         "concentration": {
-          "value": 8.0,
+          "value": 9.0,
           "unit": "μg/m³"
         },
         "subIndexes": [
@@ -513,14 +509,14 @@
         "name": "CO",
         "fullName": "一氧化碳",
         "concentration": {
-          "value": 1.1,
+          "value": 0.5,
           "unit": "mg/m³"
         },
         "subIndexes": [
           {
             "code": "cn-mee",
-            "aqi": 12,
-            "aqiDisplay": "12"
+            "aqi": 6,
+            "aqiDisplay": "6"
           }
         ]
       }
@@ -528,16 +524,16 @@
   },
   "indices": {
     "code": "200",
-    "updateTime": "2026-11-08T16:01+08:00",
+    "updateTime": "2026-11-08T23:05+08:00",
     "fxLink": "https://www.qweather.com/indices/ganjingzi-101070211.html",
     "daily": [
       {
         "date": "2026-11-08",
         "type": "1",
         "name": "运动指数",
-        "level": "3",
-        "category": "较不宜",
-        "text": "有较强降雪，建议您选择在室内进行低强度运动并注意保暖。"
+        "level": "2",
+        "category": "较适宜",
+        "text": "天气较好，但考虑风力较强且气温较低，若在户外运动请注意防风并适当增减衣物。"
       },
       {
         "date": "2026-11-08",
@@ -551,17 +547,17 @@
         "date": "2026-11-08",
         "type": "3",
         "name": "穿衣指数",
-        "level": "1",
-        "category": "寒冷",
-        "text": "天气寒冷，建议着厚羽绒服、毛皮大衣加厚毛衣等隆冬服装。年老体弱者尤其要注意保暖防冻。"
+        "level": "2",
+        "category": "冷",
+        "text": "天气冷，建议着棉服、羽绒服、皮夹克加羊毛衫等冬季服装。年老体弱者宜着厚棉衣、冬大衣或厚羽绒服。"
       },
       {
         "date": "2026-11-08",
         "type": "4",
         "name": "钓鱼指数",
-        "level": "3",
-        "category": "不宜",
-        "text": "风力太大，不适合垂钓。"
+        "level": "2",
+        "category": "较适宜",
+        "text": "较适合垂钓，但天气稍凉，会对垂钓产生一定的影响。"
       },
       {
         "date": "2026-11-08",
@@ -575,9 +571,9 @@
         "date": "2026-11-08",
         "type": "6",
         "name": "旅游指数",
-        "level": "5",
-        "category": "不适宜",
-        "text": "天气稍凉、风较大，并预报有较强降雪，会对交通产生一定的影响，请您注意出行安全。"
+        "level": "3",
+        "category": "一般",
+        "text": "天气较好，温度稍低，加之风稍大，让人感觉有点凉，会对外出有一定影响，外出注意防风保暖。"
       },
       {
         "date": "2026-11-08",
@@ -585,15 +581,15 @@
         "name": "过敏指数",
         "level": "1",
         "category": "极不易发",
-        "text": "天气条件极不易诱发过敏，有较强降雪，风力较大，人体感觉较冷，外出注意防风保暖。"
+        "text": "天气条件极不易诱发过敏，风力较大，外出注意防风。"
       },
       {
         "date": "2026-11-08",
         "type": "8",
         "name": "舒适度指数",
-        "level": "6",
-        "category": "不舒适",
-        "text": "有大雪，且天气较冷，风力较大，会使您感觉偏冷，不舒适，请注意添加衣物。"
+        "level": "2",
+        "category": "较舒适",
+        "text": "白天天气晴好但风力较强，早晚会感觉偏凉，午后舒适、宜人。"
       },
       {
         "date": "2026-11-08",
@@ -601,63 +597,63 @@
         "name": "感冒指数",
         "level": "3",
         "category": "易发",
-        "text": "相对于今天将会出现大幅度降温，风力较大，易发生感冒，请注意适当增加衣服。"
+        "text": "天冷风大，易发生感冒，请注意适当增加衣服，加强自我防护避免感冒。"
       },
       {
         "date": "2026-11-08",
         "type": "10",
         "name": "空气污染扩散条件指数",
-        "level": "1",
-        "category": "优",
-        "text": "气象条件非常有利于空气污染物稀释、扩散和清除，可在室外正常活动。"
+        "level": "2",
+        "category": "良",
+        "text": "气象条件有利于空气污染物稀释、扩散和清除，可在室外正常活动。"
       },
       {
         "date": "2026-11-08",
         "type": "11",
         "name": "空调开启指数",
-        "level": "4",
-        "category": "开启制暖空调",
-        "text": "您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒。"
+        "level": "3",
+        "category": "较少开启",
+        "text": "您将感到很舒适，一般不需要开启空调。"
       },
       {
         "date": "2026-11-08",
         "type": "12",
         "name": "太阳镜指数",
-        "level": "1",
-        "category": "不需要",
-        "text": "白天降雪天气，视线较差，不需要佩戴太阳镜"
+        "level": "3",
+        "category": "必要",
+        "text": "白天天气晴朗，太阳辐射较强，建议佩戴透射比1级且标注UV380-UV400的遮阳镜"
       },
       {
         "date": "2026-11-08",
         "type": "13",
         "name": "化妆指数",
-        "level": "1",
-        "category": "保湿",
-        "text": "天气寒冷，请用滋润保湿型化妆品，少扑粉，使用润唇膏后再抹口红。"
+        "level": "2",
+        "category": "保湿防晒",
+        "text": "偏冷风大，用防晒霜打底，选用保湿型化妆品，少扑粉。"
       },
       {
         "date": "2026-11-08",
         "type": "14",
         "name": "晾晒指数",
-        "level": "5",
-        "category": "不宜",
-        "text": "有较强降雪，不适宜晾晒。若需要晾晒，请在室内准备出充足的空间。"
+        "level": "3",
+        "category": "基本适宜",
+        "text": "天气不错，午后温暖的阳光仍能满足你驱潮消霉杀菌的晾晒需求。"
       },
       {
         "date": "2026-11-08",
         "type": "15",
         "name": "交通指数",
-        "level": "4",
-        "category": "较差",
-        "text": "有较强降雪，路面有积雪，交通气象条件较差，事故高发期，车辆应低速行驶。"
+        "level": "1",
+        "category": "良好",
+        "text": "天气较好，路面干燥，交通气象条件良好，车辆可以正常行驶。"
       },
       {
         "date": "2026-11-08",
         "type": "16",
         "name": "防晒指数",
-        "level": "1",
-        "category": "弱",
-        "text": "属弱紫外辐射天气，长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"
+        "level": "3",
+        "category": "中等",
+        "text": "属中等强度紫外辐射天气，外出时应注意防护，建议涂擦SPF指数高于15，PA+的防晒护肤品。"
       }
     ],
     "refer": {
@@ -669,7 +665,7 @@
       ]
     }
   },
-  "updated_at": "2026-11-08T16:01:29.274105+08:00",
+  "updated_at": "2026-11-08T23:05:43.689485+08:00",
   "status": "ok",
   "location": {
     "name": "大连沙河口区",
@@ -682,81 +678,81 @@
     "precipitation": "mm",
     "probability": "%"
   },
-  "alert_text": "未来24小时有雪，最高降水概率70%、预计降水0.6毫米。 未来两小时分钟预报有降水，合计约2.2毫米，请留意雨雪。 未来24小时大风：最大风速46公里/小时，阵风数据未知。",
+  "alert_text": "未来两小时分钟预报有降水，合计约0.5毫米，请留意雨雪。 未来24小时大风：最大风速43公里/小时，阵风数据未知。",
   "alerts": {
-    "checked_at": "2026-11-08T16:01:29.274105+08:00",
+    "checked_at": "2026-11-08T23:05:43.689485+08:00",
     "level": "重要",
     "changes": [
       {
-        "type": "wind",
+        "type": "分钟降水",
         "level": "重要",
         "score": 1,
-        "message": "未来24小时大风：最大风速46公里/小时，阵风数据未知。"
+        "message": "未来两小时分钟预报有降水，合计约0.5毫米，请留意雨雪。"
       }
     ],
-    "text": "大连沙河口天气｜2026-11-08 16:01（北京时间）\n未来24小时大风：最大风速46公里/小时，阵风数据未知。"
+    "text": "大连沙河口天气｜2026-11-08 23:05（北京时间）\n未来两小时分钟预报有降水，合计约0.5毫米，请留意雨雪。"
   },
   "layers": {
     "fast": {
-      "slot": "2026-11-08T16:00:00+08:00",
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "slot": "2026-11-08T23:00:00+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
       "failed_fields": [],
-      "updated_at": "2026-11-08T16:01:29.274105+08:00"
+      "updated_at": "2026-11-08T23:05:43.689485+08:00"
     },
     "medium": {
-      "slot": "2026-11-08T16:00:00+08:00",
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "slot": "2026-11-08T23:00:00+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
       "failed_fields": [],
-      "updated_at": "2026-11-08T16:01:29.274105+08:00"
+      "updated_at": "2026-11-08T23:05:43.689485+08:00"
     },
     "slow": {
-      "slot": "2026-11-08T11:50:00+08:00",
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "slot": "2026-11-08T17:50:00+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
       "failed_fields": [],
-      "updated_at": "2026-11-08T16:01:29.274105+08:00"
+      "updated_at": "2026-11-08T23:05:43.689485+08:00"
     }
   },
   "fields": {
     "current": {
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
-      "updated_at": "2026-11-08T16:01:29.274105+08:00",
+      "updated_at": "2026-11-08T23:05:43.689485+08:00",
       "error": null
     },
     "minute": {
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
-      "updated_at": "2026-11-08T16:01:29.274105+08:00",
+      "updated_at": "2026-11-08T23:05:43.689485+08:00",
       "error": null
     },
     "hourly": {
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
-      "updated_at": "2026-11-08T16:01:29.274105+08:00",
+      "updated_at": "2026-11-08T23:05:43.689485+08:00",
       "error": null
     },
     "air": {
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
-      "updated_at": "2026-11-08T16:01:29.274105+08:00",
+      "updated_at": "2026-11-08T23:05:43.689485+08:00",
       "error": null
     },
     "daily": {
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
-      "updated_at": "2026-11-08T16:01:29.274105+08:00",
+      "updated_at": "2026-11-08T23:05:43.689485+08:00",
       "error": null
     },
     "indices": {
-      "checked_at": "2026-11-08T16:01:29.274105+08:00",
+      "checked_at": "2026-11-08T23:05:43.689485+08:00",
       "status": "ok",
-      "updated_at": "2026-11-08T16:01:29.274105+08:00",
+      "updated_at": "2026-11-08T23:05:43.689485+08:00",
       "error": null
     }
   },
-  "checked_at": "2026-11-08T16:01:29.274105+08:00",
+  "checked_at": "2026-11-08T23:05:43.689485+08:00",
   "error": null
 }
