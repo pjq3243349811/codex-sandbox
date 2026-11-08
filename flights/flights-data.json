@@ -1,208 +1,426 @@
 {
-  "kind": "sample",
-  "source": "飞途人工编制示例数据（非真实班次、非实时票价）",
-  "updatedAt": "2026-11-08T09:00:00+08:00",
+  "kind": "api",
+  "source": "Duffel 实时报价（美元总价按 7.15 折算为人民币约价，实际下单价以购票页为准）",
+  "updatedAt": "2026-11-08T21:24:54+08:00",
   "currency": "CNY",
   "flights": [
     {
       "origin": "DLC",
       "destination": "KWE",
-      "airline": "中国南方航空",
-      "flightNumber": "CZ2400",
-      "departure": "08:10",
-      "durationMinutes": 220,
-      "stops": [],
-      "price": 620,
+      "airline": "山东航空",
+      "flightNumber": "SC8043",
+      "departure": "16:50",
+      "durationMinutes": 305,
+      "stops": [
+        "经停"
+      ],
+      "price": 2370,
+      "priceUSD": 331.5,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
     },
     {
       "origin": "DLC",
       "destination": "KWE",
       "airline": "中国国际航空",
-      "flightNumber": "CA2401",
-      "departure": "13:35",
-      "durationMinutes": 230,
-      "stops": [],
-      "price": 760,
+      "flightNumber": "CA4899",
+      "departure": "16:50",
+      "durationMinutes": 305,
+      "stops": [
+        "经停"
+      ],
+      "price": 2549,
+      "priceUSD": 356.5,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "山东航空",
+      "flightNumber": "CZ8621/SC2323",
+      "departure": "07:45",
+      "durationMinutes": 565,
+      "stops": [
+        "CGO"
+      ],
+      "price": 2960,
+      "priceUSD": 414.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "山东航空",
+      "flightNumber": "SC4732/SC4815",
+      "departure": "10:35",
+      "durationMinutes": 360,
+      "stops": [
+        "TAO"
+      ],
+      "price": 3074,
+      "priceUSD": 430.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "山东航空",
+      "flightNumber": "SC4744/SC4965",
+      "departure": "17:00",
+      "durationMinutes": 475,
+      "stops": [
+        "TAO"
+      ],
+      "price": 3074,
+      "priceUSD": 430.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6337/CZ8800",
+      "departure": "07:05",
+      "durationMinutes": 830,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6337/CZ8574",
+      "departure": "07:05",
+      "durationMinutes": 960,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国国际航空",
+      "flightNumber": "CA4770/SC4965",
+      "departure": "17:00",
+      "durationMinutes": 475,
+      "stops": [
+        "TAO"
+      ],
+      "price": 3160,
+      "priceUSD": 442.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国国际航空",
+      "flightNumber": "CA4768/SC4815",
+      "departure": "21:15",
+      "durationMinutes": 1160,
+      "stops": [
+        "TAO"
+      ],
+      "price": 3160,
+      "priceUSD": 442.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国国际航空",
+      "flightNumber": "CA8794/SC4815",
+      "departure": "10:35",
+      "durationMinutes": 360,
+      "stops": [
+        "TAO"
+      ],
+      "price": 3160,
+      "priceUSD": 442.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6425/CZ8277",
+      "departure": "08:05",
+      "durationMinutes": 450,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6983/CZ8277",
+      "departure": "11:35",
+      "durationMinutes": 1680,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
     },
     {
       "origin": "DLC",
       "destination": "KWE",
       "airline": "中国东方航空",
-      "flightNumber": "MU2402",
-      "departure": "18:20",
+      "flightNumber": "MU2778/MU9783",
+      "departure": "10:40",
+      "durationMinutes": 470,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6337/CZ8574",
+      "departure": "07:05",
+      "durationMinutes": 960,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6337/CZ8800",
+      "departure": "07:05",
+      "durationMinutes": 830,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6514/CZ8277",
+      "departure": "15:00",
+      "durationMinutes": 1475,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6425/CZ8277",
+      "departure": "08:05",
+      "durationMinutes": 450,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6983/CZ8277",
+      "departure": "11:35",
+      "durationMinutes": 1680,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ5809/CZ6422",
+      "departure": "07:20",
+      "durationMinutes": 910,
+      "stops": [
+        "NGB"
+      ],
+      "price": 3368,
+      "priceUSD": 471.0,
+      "cabin": "economy",
+      "date": "2026-11-15"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ5809/CZ8518",
+      "departure": "07:20",
       "durationMinutes": 400,
       "stops": [
-        "XIY"
+        "NGB"
       ],
-      "price": 500,
+      "price": 3368,
+      "priceUSD": 471.0,
       "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "KWE",
-      "airline": "海南航空",
-      "flightNumber": "HU2403",
-      "departure": "10:45",
-      "durationMinutes": 250,
-      "stops": [],
-      "price": 700,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "THQ",
-      "airline": "中国南方航空",
-      "flightNumber": "CZ2404",
-      "departure": "08:10",
-      "durationMinutes": 240,
-      "stops": [],
-      "price": 730,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "THQ",
-      "airline": "中国国际航空",
-      "flightNumber": "CA2405",
-      "departure": "13:35",
-      "durationMinutes": 250,
-      "stops": [],
-      "price": 870,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "THQ",
-      "airline": "中国东方航空",
-      "flightNumber": "MU2406",
-      "departure": "18:20",
-      "durationMinutes": 420,
-      "stops": [
-        "XIY"
-      ],
-      "price": 610,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "THQ",
-      "airline": "海南航空",
-      "flightNumber": "HU2407",
-      "departure": "10:45",
-      "durationMinutes": 270,
-      "stops": [],
-      "price": 810,
-      "cabin": "economy",
-      "date": null
+      "date": "2026-11-15"
     },
     {
       "origin": "DLC",
       "destination": "KMG",
-      "airline": "中国南方航空",
-      "flightNumber": "CZ2408",
-      "departure": "08:10",
+      "airline": "四川航空",
+      "flightNumber": "3U6822/3U6617",
+      "departure": "14:30",
+      "durationMinutes": 1225,
+      "stops": [
+        "TFU"
+      ],
+      "price": 2810,
+      "priceUSD": 393.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "四川航空",
+      "flightNumber": "3U6822/3U6619",
+      "departure": "14:30",
+      "durationMinutes": 505,
+      "stops": [
+        "TFU"
+      ],
+      "price": 2810,
+      "priceUSD": 393.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "四川航空",
+      "flightNumber": "CZ8621/3U8246",
+      "departure": "07:45",
+      "durationMinutes": 855,
+      "stops": [
+        "CGO"
+      ],
+      "price": 2939,
+      "priceUSD": 411.0,
+      "cabin": "economy",
+      "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KMG",
+      "airline": "中国东方航空",
+      "flightNumber": "MU5800",
+      "departure": "15:40",
       "durationMinutes": 260,
       "stops": [],
-      "price": 710,
+      "price": 3293,
+      "priceUSD": 460.5,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
     },
     {
       "origin": "DLC",
       "destination": "KMG",
-      "airline": "中国国际航空",
-      "flightNumber": "CA2409",
-      "departure": "13:35",
-      "durationMinutes": 270,
-      "stops": [],
-      "price": 850,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "KMG",
-      "airline": "中国东方航空",
-      "flightNumber": "MU2410",
-      "departure": "18:20",
-      "durationMinutes": 440,
-      "stops": [
-        "XIY"
-      ],
-      "price": 590,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "KMG",
-      "airline": "海南航空",
-      "flightNumber": "HU2411",
-      "departure": "10:45",
-      "durationMinutes": 290,
-      "stops": [],
-      "price": 790,
-      "cabin": "economy",
-      "date": null
-    },
-    {
-      "origin": "DLC",
-      "destination": "PEK",
       "airline": "中国南方航空",
-      "flightNumber": "CZ2412",
-      "departure": "08:10",
-      "durationMinutes": 90,
-      "stops": [],
-      "price": 380,
+      "flightNumber": "CZ6425",
+      "departure": "08:05",
+      "durationMinutes": 360,
+      "stops": [
+        "经停"
+      ],
+      "price": 3293,
+      "priceUSD": 460.5,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
     },
     {
       "origin": "DLC",
-      "destination": "PEK",
-      "airline": "中国国际航空",
-      "flightNumber": "CA2413",
-      "departure": "13:35",
-      "durationMinutes": 100,
-      "stops": [],
-      "price": 520,
+      "destination": "KMG",
+      "airline": "四川航空",
+      "flightNumber": "CA8726/3U8266",
+      "departure": "10:10",
+      "durationMinutes": 360,
+      "stops": [
+        "TNA"
+      ],
+      "price": 3325,
+      "priceUSD": 465.0,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
     },
     {
       "origin": "DLC",
-      "destination": "PEK",
-      "airline": "中国东方航空",
-      "flightNumber": "MU2414",
-      "departure": "18:20",
-      "durationMinutes": 270,
+      "destination": "KMG",
+      "airline": "四川航空",
+      "flightNumber": "CZ6965/3U8230",
+      "departure": "08:40",
+      "durationMinutes": 760,
       "stops": [
         "XIY"
       ],
-      "price": 260,
+      "price": 3346,
+      "priceUSD": 468.0,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
     },
     {
       "origin": "DLC",
-      "destination": "PEK",
-      "airline": "海南航空",
-      "flightNumber": "HU2415",
-      "departure": "10:45",
-      "durationMinutes": 120,
-      "stops": [],
-      "price": 460,
+      "destination": "KMG",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ8621/CZ3495",
+      "departure": "07:45",
+      "durationMinutes": 410,
+      "stops": [
+        "CGO"
+      ],
+      "price": 3453,
+      "priceUSD": 483.0,
       "cabin": "economy",
-      "date": null
+      "date": "2026-11-20"
     }
   ]
 }
