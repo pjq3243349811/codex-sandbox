@@ -81,3 +81,58 @@ python3 scripts/fetch_weather.py
 ```
 
 测试使用天气响应模拟数据，不需要任何认证值；覆盖提醒、去重、升档、扩展接口不可用和缺少环境变量时的错误输出。真实抓取必须由主人配置 Secrets 后在 Actions 运行验证。
+
+## 大连生活数据站：频道整合
+
+首页现为「天气 / 特价机票 / 招聘」三个频道，支持手机布局及 `#weather`、`#deals`、`#jobs` 直达链接。天气频道保留原有全部展示、立即刷新、10 分钟轮询、分层状态与过期提醒。**本次未修改 `weather.json`、`scripts/fetch_weather.py`、`.github/workflows/weather.yml` 或 `data/`**。上文“页面只读取 weather.json”特指天气频道；新增频道分别只读取自己的根目录 JSON，浏览器不抓取外站。
+
+### 文件与免费数据源
+
+| 路径 | 用途 |
+|---|---|
+| `index.html` | 原天气页面增加频道导航、独立频道容器与手机样式 |
+| `life.js` | 新频道切换、读取、卡片、空状态、错误/历史状态；外部内容使用 textContent |
+| `deals.json` | 大连出发参考起价、目的地、来源日期范围、购票深链及抓取状态 |
+| `jobs.json` | 单位、岗位、学历、专业、截止说明、官方原文和岗位表链接 |
+| `scripts/fetch_deals.py` | 春秋航空公开低价列表 `https://flights.ch.com/DLC-from.html`；仅读取原页面明确报价的大连出发航线 |
+| `scripts/fetch_jobs.py` | 人社局 `https://rsj.dl.gov.cn/col/col4341/index.html`，国资委 `https://gzw.dl.gov.cn/` 的“通知公告”列表；读取招聘原文及 HTML/XLSX/XLS 岗位表 |
+| `scripts/life_common.py` | 独立生活频道 IO、检查状态、原子写入与失败保留；不访问天气文件 |
+| `scripts/life-requirements.txt` | 免费开源的 openpyxl / xlrd，用于 Excel 岗位表；静态网页无需安装依赖 |
+| `.github/workflows/deals.yml` | 每天北京时间 06:25 检查机票，可手动运行 |
+| `.github/workflows/jobs.yml` | 每周一北京时间 06:45 检查招聘，可手动运行 |
+| `tests/test_life.py` | 出发地/深链/日期、岗位逐行筛选、合并格、失败保留与官方域名验证 |
+
+不使用付费 API、账号、第三方收费抓取或新增 Secrets。GitHub Actions 是否可用仍受账号免费额度与仓库权限限制。新增工作流仅暂存对应的 `deals.json` / `jobs.json`，提交前 rebase，避免天气机器人并发提交造成覆盖；不会提交天气数据。定时只在默认分支生效，调度可能延迟。
+
+### 数据语义与边界
+
+- 两份 JSON 均含 `items`、`sources`、`status`、`updated_at`（最后完整成功时间）、`checked_at`（最近尝试）和 `message`。抓取失败保留旧条目及成功时间并标为 `error`；部分失败标为 `partial`，保留未重新核验条目并设置 `historical: true`。首次没有成功数据就保持空数组，绝不生成演示价格或虚构岗位。
+- 机票为航空公司公开**起价**，不保证含税费或有余票。来源未公布出行日期时 `date_start/date_end` 为 null，卡片明确提示，绝不将抓取日期冒充出行日期。官网购票深链取自原页面，不构造无依据的订单链接。无法解析或出现验证页视为失败，保留旧数据。超过 48 小时提示历史信息。
+- 招聘最多检查每个列表最近 30 篇招聘公告，排除标题中的拟聘公示、考试通知、编外及劳务派遣。只按**同一岗位行**的学历字段确认“大专/专科”；本科及以上不会因别的岗位允许大专而混入。“不限专业”只根据同岗位专业字段完整匹配，不按公告全文推断。保留原文学历条件（含全日制等），最终资格以原公告为准。
+- 支持 HTML 合并格、XLS/XLSX 合并格。图片、PDF、Word 岗位表、多层复杂表头或正文散文要求无法可靠核验时不猜测，保留旧数据并给出部分失败说明，需到官方原文人工核对。截止时间仅提取报名语境的明确年月日说明；缺失时显示“原文未明确提取”，不将发布日期当截止日期。超过 8 天提示历史信息；旧招聘记录可能已截止，须核验原文。
+- 初次开发环境的出站网络限制了上述数据源，仓库初始 JSON 记录真实失败检查、空条目和空成功时间。请在合入默认分支后运行两个 Actions 验证实际源站连通性；源站反爬、结构变更、无可识别岗位表也会明确标记异常，不用旧值伪装成功。
+
+### 本地与 GitHub Pages 验证
+
+仅打开页面无需安装依赖：
+
+```sh
+cd codex-sandbox
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+打开 `http://127.0.0.1:8000/`，依次点三个频道；也可直达 `http://127.0.0.1:8000/#deals` 和 `http://127.0.0.1:8000/#jobs`。通过开发者工具切换 390px 手机宽度，检查导航、卡片及天气横向滚动表格。不能双击 `file://`，因为浏览器会限制 JSON fetch。
+
+执行新增抓取（**不要为验证生活频道运行天气抓取脚本**）：
+
+```sh
+python3 -m venv work/venv
+work/venv/bin/pip install -r scripts/life-requirements.txt
+work/venv/bin/python scripts/fetch_deals.py
+work/venv/bin/python scripts/fetch_jobs.py
+work/venv/bin/python -m unittest discover -s tests -v
+```
+
+失败退出码为 1，但仍写入检查状态及保留旧数据。来源可访问时可在后台核验 JSON 报价、岗位行、深链与原文一致。模拟数据只存在测试夹具中，不写进公开 JSON。
+
+提交进入默认分支后，在 **Settings → Pages → Deploy from a branch → main / (root)** 发布，访问 `https://pjq3243349811.github.io/codex-sandbox/`（前提为仓库已启用 Pages）。刷新并检查三个频道；在 Actions 手动运行“特价机票每日更新”与“招聘每周更新”，确认仅对应 JSON 改变。天气 Actions、Secrets 与分层调度沿用原配置。
