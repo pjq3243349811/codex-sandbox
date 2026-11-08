@@ -1,9 +1,9 @@
 {
   "items": [],
   "updated_at": null,
-  "checked_at": "2026-11-08T08:58:50+00:00",
+  "checked_at": "2026-11-08T09:03:10+00:00",
   "status": "error",
-  "message": "抓取失败（URLError），保留上次数据；尚无成功数据时为空。",
+  "message": "抓取失败（ValueError），保留上次数据；尚无成功数据时为空。",
   "sources": [
     "https://flights.ch.com/DLC-from.html"
   ]
