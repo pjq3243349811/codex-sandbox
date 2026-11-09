@@ -12,6 +12,8 @@ import { resolve } from 'node:path';
 const airlines = { 'China Southern Airlines':'中国南方航空', 'China Eastern Airlines':'中国东方航空', 'Air China':'中国国际航空', 'Shandong Airlines':'山东航空', 'Hainan Airlines':'海南航空', 'Sichuan Airlines':'四川航空', 'Xiamen Airlines':'厦门航空' };
 const group = f => `${f.origin}/${f.destination}/${f.date}`;
 const identity = f => JSON.stringify([group(f), f.flightNumber, f.departure, f.durationMinutes, f.stops, f.cabin]);
+// Duffel can return a ground transfer between Shanghai's two airports.
+const sameCityTransfer = (a,b) => a !== b && [a,b].every(code => ['PVG','SHA'].includes(code));
 function minutes(value) {
   const m = /^(?:(\d+)h)?(?:(\d+)m)?$/.exec(value ?? '');
   const n = m && (Number(m[1] || 0) * 60 + Number(m[2] || 0));
@@ -38,9 +40,9 @@ export function convert(result, emptyRoute) {
     const s = o.slices[0], segments = s.segments;
     if (!segments?.length) throw Error('Missing segments');
     const first = segments[0], last = segments.at(-1);
-    if (first.from !== s.from || last.to !== s.to || segments.some((seg,i) => i && segments[i-1].to !== seg.from)) throw Error('Inconsistent segment route');
+    if (first.from !== s.from || last.to !== s.to || segments.some((seg,i) => i && segments[i-1].to !== seg.from && !sameCityTransfer(segments[i-1].to,seg.from))) throw Error('Inconsistent segment route');
     if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(first.departing_at) || !o.airline || segments.some(seg => !seg.flight)) throw Error('Missing flight details');
-    const stops = segments.slice(0,-1).map(seg => seg.to);
+    const stops = segments.slice(0,-1).map((seg,i) => seg.to === segments[i+1].from ? seg.to : `${seg.to}→${segments[i+1].from}（换机场）`);
     if (!Number.isInteger(s.stops) || s.stops < stops.length) throw Error('Invalid stop count');
     while (stops.length < s.stops) stops.push('经停');
     const f = { origin:s.from, destination:s.to, airline:airlines[o.airline] || o.airline, flightNumber:segments.map(seg => seg.flight).join('/'), departure:first.departing_at.slice(11,16), durationMinutes:minutes(s.duration), stops, price:Math.round(Number(o.price)*7.15), priceUSD:Number(o.price), cabin:s.cabin?.toLowerCase(), date:first.departing_at.slice(0,10) };
