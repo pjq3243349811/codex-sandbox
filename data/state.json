@@ -1,16 +1,27 @@
 {
-  "checked_at": "2026-11-09T10:38:36.550297+08:00",
+  "checked_at": "2026-11-09T18:20:59.435958+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-09T10:25+08:00",
-    "temperature": 4.0,
+    "time": "2026-11-09T18:05+08:00",
+    "temperature": 6.0,
     "text": "晴",
-    "wind_speed": 22.0,
+    "wind_speed": 14.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
   },
-  "risks": {},
+  "risks": {
+    "wind": {
+      "score": 1,
+      "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。",
+      "notified_at": "2026-11-09T18:20:59.435958+08:00"
+    },
+    "升温": {
+      "score": 2,
+      "message": "未来24小时较当前升温8.0℃，注意调整衣物。",
+      "notified_at": "2026-11-09T18:20:59.435958+08:00"
+    }
+  },
   "location": {
     "name": "大连沙河口区",
     "latitude": 38.88,
