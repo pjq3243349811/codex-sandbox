@@ -1,7 +1,7 @@
 {
   "kind": "api",
   "source": "Duffel 实时报价（美元总价按 7.15 折算为人民币约价，实际下单价以购票页为准）",
-  "updatedAt": "2026-11-08T21:24:54+08:00",
+  "updatedAt": "2026-11-09T11:10:03.609Z",
   "currency": "CNY",
   "flights": [
     {
@@ -45,7 +45,7 @@
         "CGO"
       ],
       "price": 2960,
-      "priceUSD": 414.0,
+      "priceUSD": 414,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -60,7 +60,7 @@
         "TAO"
       ],
       "price": 3074,
-      "priceUSD": 430.0,
+      "priceUSD": 430,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -75,7 +75,7 @@
         "TAO"
       ],
       "price": 3074,
-      "priceUSD": 430.0,
+      "priceUSD": 430,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -90,7 +90,7 @@
         "NKG"
       ],
       "price": 3153,
-      "priceUSD": 441.0,
+      "priceUSD": 441,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -105,7 +105,7 @@
         "NKG"
       ],
       "price": 3153,
-      "priceUSD": 441.0,
+      "priceUSD": 441,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -120,7 +120,7 @@
         "TAO"
       ],
       "price": 3160,
-      "priceUSD": 442.0,
+      "priceUSD": 442,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -135,7 +135,7 @@
         "TAO"
       ],
       "price": 3160,
-      "priceUSD": 442.0,
+      "priceUSD": 442,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -150,7 +150,7 @@
         "TAO"
       ],
       "price": 3160,
-      "priceUSD": 442.0,
+      "priceUSD": 442,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -165,7 +165,7 @@
         "WUH"
       ],
       "price": 3182,
-      "priceUSD": 445.0,
+      "priceUSD": 445,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -180,7 +180,7 @@
         "WUH"
       ],
       "price": 3182,
-      "priceUSD": 445.0,
+      "priceUSD": 445,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -195,7 +195,7 @@
         "NKG"
       ],
       "price": 3153,
-      "priceUSD": 441.0,
+      "priceUSD": 441,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -210,7 +210,7 @@
         "NKG"
       ],
       "price": 3153,
-      "priceUSD": 441.0,
+      "priceUSD": 441,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -225,7 +225,7 @@
         "NKG"
       ],
       "price": 3153,
-      "priceUSD": 441.0,
+      "priceUSD": 441,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -240,7 +240,7 @@
         "WUH"
       ],
       "price": 3182,
-      "priceUSD": 445.0,
+      "priceUSD": 445,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -255,7 +255,7 @@
         "WUH"
       ],
       "price": 3182,
-      "priceUSD": 445.0,
+      "priceUSD": 445,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -270,7 +270,7 @@
         "WUH"
       ],
       "price": 3182,
-      "priceUSD": 445.0,
+      "priceUSD": 445,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -285,7 +285,7 @@
         "NGB"
       ],
       "price": 3368,
-      "priceUSD": 471.0,
+      "priceUSD": 471,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -300,7 +300,7 @@
         "NGB"
       ],
       "price": 3368,
-      "priceUSD": 471.0,
+      "priceUSD": 471,
       "cabin": "economy",
       "date": "2026-11-15"
     },
@@ -315,7 +315,7 @@
         "TFU"
       ],
       "price": 2810,
-      "priceUSD": 393.0,
+      "priceUSD": 393,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -330,7 +330,7 @@
         "TFU"
       ],
       "price": 2810,
-      "priceUSD": 393.0,
+      "priceUSD": 393,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -345,7 +345,7 @@
         "CGO"
       ],
       "price": 2939,
-      "priceUSD": 411.0,
+      "priceUSD": 411,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -388,7 +388,7 @@
         "TNA"
       ],
       "price": 3325,
-      "priceUSD": 465.0,
+      "priceUSD": 465,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -403,7 +403,7 @@
         "XIY"
       ],
       "price": 3346,
-      "priceUSD": 468.0,
+      "priceUSD": 468,
       "cabin": "economy",
       "date": "2026-11-20"
     },
@@ -418,9 +418,235 @@
         "CGO"
       ],
       "price": 3453,
-      "priceUSD": 483.0,
+      "priceUSD": 483,
       "cabin": "economy",
       "date": "2026-11-20"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6644/CZ6297",
+      "departure": "17:40",
+      "durationMinutes": 1040,
+      "stops": [
+        "CGO"
+      ],
+      "price": 2881,
+      "priceUSD": 403,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "山东航空",
+      "flightNumber": "CZ6644/SC2323",
+      "departure": "17:40",
+      "durationMinutes": 1410,
+      "stops": [
+        "CGO"
+      ],
+      "price": 2960,
+      "priceUSD": 414,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国东方航空",
+      "flightNumber": "MU2778/MU9783",
+      "departure": "10:40",
+      "durationMinutes": 470,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6337/CZ8508",
+      "departure": "07:05",
+      "durationMinutes": 560,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6337/CZ8800",
+      "departure": "07:05",
+      "durationMinutes": 830,
+      "stops": [
+        "NKG"
+      ],
+      "price": 3153,
+      "priceUSD": 441,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6514/CZ8277",
+      "departure": "15:00",
+      "durationMinutes": 1475,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "中国南方航空",
+      "flightNumber": "CZ6425/CZ8277",
+      "departure": "08:05",
+      "durationMinutes": 450,
+      "stops": [
+        "WUH"
+      ],
+      "price": 3182,
+      "priceUSD": 445,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "海南航空",
+      "flightNumber": "HU7776/HU6173",
+      "departure": "20:00",
+      "durationMinutes": 855,
+      "stops": [
+        "TYN"
+      ],
+      "price": 3732,
+      "priceUSD": 522,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "海南航空",
+      "flightNumber": "HU7776/HU7050",
+      "departure": "20:00",
+      "durationMinutes": 1420,
+      "stops": [
+        "TYN"
+      ],
+      "price": 3732,
+      "priceUSD": 522,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "海南航空",
+      "flightNumber": "CZ6965/HU6363",
+      "departure": "08:40",
+      "durationMinutes": 410,
+      "stops": [
+        "XIY"
+      ],
+      "price": 3754,
+      "priceUSD": 525,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "海南航空",
+      "flightNumber": "CZ6965/HU7519",
+      "departure": "08:40",
+      "durationMinutes": 610,
+      "stops": [
+        "XIY"
+      ],
+      "price": 3754,
+      "priceUSD": 525,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "海南航空",
+      "flightNumber": "HU7659/GS6492",
+      "departure": "08:15",
+      "durationMinutes": 965,
+      "stops": [
+        "TSN"
+      ],
+      "price": 3890,
+      "priceUSD": 544,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "Hahn Air",
+      "flightNumber": "GS7822/GS6492",
+      "departure": "11:25",
+      "durationMinutes": 775,
+      "stops": [
+        "TSN"
+      ],
+      "price": 4211,
+      "priceUSD": 589,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "厦门航空",
+      "flightNumber": "MF8026/MF8449",
+      "departure": "08:00",
+      "durationMinutes": 540,
+      "stops": [
+        "FOC"
+      ],
+      "price": 4555,
+      "priceUSD": 637,
+      "cabin": "economy",
+      "date": "2026-11-16"
+    },
+    {
+      "origin": "DLC",
+      "destination": "KWE",
+      "airline": "山东航空",
+      "flightNumber": "HU7776/SC2320",
+      "departure": "20:00",
+      "durationMinutes": 960,
+      "stops": [
+        "TYN"
+      ],
+      "price": 6185,
+      "priceUSD": 865,
+      "cabin": "economy",
+      "date": "2026-11-16"
     }
-  ]
+  ],
+  "updated_at": "2026-11-09T11:10:03.609Z"
 }
