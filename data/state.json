@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-11T11:08:16.578408+08:00",
+  "checked_at": "2026-11-11T18:50:24.481767+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-11T10:48+08:00",
-    "temperature": 13.0,
+    "time": "2026-11-11T18:37+08:00",
+    "temperature": 11.0,
     "text": "晴",
-    "wind_speed": 30.0,
+    "wind_speed": 24.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
