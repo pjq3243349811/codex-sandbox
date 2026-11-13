@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-13T18:06:30.295634+08:00",
+  "checked_at": "2026-11-14T01:41:36.961506+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-13T17:48+08:00",
-    "temperature": 12.0,
-    "text": "多云",
-    "wind_speed": 6.0,
+    "time": "2026-11-14T01:25+08:00",
+    "temperature": 11.0,
+    "text": "雾",
+    "wind_speed": 9.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
