@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-15T14:56:50.699524+08:00",
+  "checked_at": "2026-11-15T22:34:29.252817+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-15T14:37+08:00",
-    "temperature": 7.0,
-    "text": "多云",
-    "wind_speed": 47.0,
+    "time": "2026-11-15T22:25+08:00",
+    "temperature": 5.0,
+    "text": "阴",
+    "wind_speed": 40.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
@@ -13,7 +13,7 @@
   "risks": {
     "wind": {
       "score": 1,
-      "message": "未来24小时大风：最大风速47公里/小时，阵风数据未知。",
+      "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。",
       "notified_at": "2026-11-15T14:56:50.699524+08:00"
     }
   },
