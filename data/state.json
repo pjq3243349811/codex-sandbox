@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-16T03:56:02.839804+08:00",
+  "checked_at": "2026-11-16T07:46:21.879983+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-16T03:37+08:00",
+    "time": "2026-11-16T07:25+08:00",
     "temperature": 4.0,
     "text": "阴",
-    "wind_speed": 21.0,
+    "wind_speed": 20.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
