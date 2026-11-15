@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-15T04:46:21.181943+08:00",
+  "checked_at": "2026-11-15T08:23:49.170796+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-15T04:25+08:00",
-    "temperature": 7.0,
+    "time": "2026-11-15T08:05+08:00",
+    "temperature": 6.0,
     "text": "霾",
-    "wind_speed": 27.0,
+    "wind_speed": 34.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
