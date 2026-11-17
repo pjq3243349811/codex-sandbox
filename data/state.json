@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-17T11:57:58.184389+08:00",
+  "checked_at": "2026-11-17T20:57:04.247884+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-17T11:37+08:00",
-    "temperature": 5.0,
+    "time": "2026-11-17T20:48+08:00",
+    "temperature": 3.0,
     "text": "阴",
-    "wind_speed": 27.0,
+    "wind_speed": 19.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
@@ -13,13 +13,13 @@
   "risks": {
     "precipitation": {
       "score": 1,
-      "message": "未来24小时有雨，最高降水概率70%、预计降水1.7毫米。",
+      "message": "未来24小时有雨，最高降水概率70%、预计降水2.5毫米。",
       "notified_at": "2026-11-17T05:14:24.661140+08:00"
     },
     "wind": {
-      "score": 1,
-      "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。",
-      "notified_at": "2026-11-16T19:39:04.806283+08:00"
+      "score": 2,
+      "message": "未来24小时大风：最大风速50公里/小时，阵风数据未知。",
+      "notified_at": "2026-11-17T20:57:04.247884+08:00"
     },
     "转折-雨": {
       "score": 1,
