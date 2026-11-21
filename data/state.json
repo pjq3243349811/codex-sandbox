@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-21T19:43:49.528986+08:00",
+  "checked_at": "2026-11-22T02:15:43.992987+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-21T19:25+08:00",
-    "temperature": -1.0,
+    "time": "2026-11-22T01:48+08:00",
+    "temperature": -2.0,
     "text": "多云",
-    "wind_speed": 19.0,
+    "wind_speed": 6.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
@@ -17,9 +17,9 @@
       "notified_at": "2026-11-21T11:32:29.497248+08:00"
     },
     "升温": {
-      "score": 2,
-      "message": "未来24小时较当前升温9.0℃，注意调整衣物。",
-      "notified_at": "2026-11-21T19:43:49.528986+08:00"
+      "score": 3,
+      "message": "未来24小时较当前升温12.0℃，注意调整衣物。",
+      "notified_at": "2026-11-22T02:15:43.992987+08:00"
     }
   },
   "location": {
