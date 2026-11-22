@@ -1,20 +1,30 @@
 {
-  "checked_at": "2026-11-22T11:23:39.209379+08:00",
+  "checked_at": "2026-11-22T19:47:49.986175+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-22T11:05+08:00",
-    "temperature": 5.0,
-    "text": "阴",
-    "wind_speed": 28.0,
+    "time": "2026-11-22T19:37+08:00",
+    "temperature": 7.0,
+    "text": "多云",
+    "wind_speed": 31.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
   },
   "risks": {
+    "precipitation": {
+      "score": 1,
+      "message": "未来24小时有雨，最高降水概率70%、预计降水1.4毫米。",
+      "notified_at": "2026-11-22T19:47:49.986175+08:00"
+    },
     "wind": {
       "score": 1,
       "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。",
-      "notified_at": "2026-11-21T11:32:29.497248+08:00"
+      "notified_at": "2026-11-22T19:47:49.986175+08:00"
+    },
+    "转折-雨": {
+      "score": 1,
+      "message": "2026-11-22T23:00+08:00前后天气由多云转为小雨。",
+      "notified_at": "2026-11-22T19:47:49.986175+08:00"
     }
   },
   "location": {
