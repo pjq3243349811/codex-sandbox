@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-27T02:23:05.879909+08:00",
+  "checked_at": "2026-11-27T09:51:19.309631+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-27T02:15+08:00",
-    "temperature": 8.0,
-    "text": "雾",
-    "wind_speed": 11.0,
+    "time": "2026-11-27T09:37+08:00",
+    "temperature": 10.0,
+    "text": "霾",
+    "wind_speed": 20.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
@@ -15,6 +15,11 @@
       "score": 1,
       "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。",
       "notified_at": "2026-11-26T16:06:09.594472+08:00"
+    },
+    "降温": {
+      "score": 2,
+      "message": "未来24小时较当前降温8.0℃，注意调整衣物。",
+      "notified_at": "2026-11-27T09:51:19.309631+08:00"
     }
   },
   "location": {
