@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-28T18:24:04.843190+08:00",
+  "checked_at": "2026-11-29T02:21:13.159776+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-28T18:05+08:00",
+    "time": "2026-11-29T01:48+08:00",
     "temperature": 3.0,
-    "text": "多云",
-    "wind_speed": 30.0,
+    "text": "晴",
+    "wind_speed": 8.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
