@@ -1,20 +1,25 @@
 {
-  "checked_at": "2026-11-28T03:38:30.619867+08:00",
+  "checked_at": "2026-11-28T10:09:53.928532+08:00",
   "source": "qweather",
   "current": {
-    "time": "2026-11-28T03:25+08:00",
-    "temperature": 4.0,
+    "time": "2026-11-28T09:48+08:00",
+    "temperature": 3.0,
     "text": "多云",
-    "wind_speed": 25.0,
+    "wind_speed": 54.0,
     "gust": null,
     "precipitation": 0.0,
     "probability": null
   },
   "risks": {
-    "wind": {
+    "分钟降水": {
       "score": 1,
-      "message": "未来24小时大风：最大风速43公里/小时，阵风数据未知。",
-      "notified_at": "2026-11-27T18:30:26.557915+08:00"
+      "message": "未来两小时分钟预报有降水，合计约0.2毫米，请留意雨雪。",
+      "notified_at": "2026-11-28T10:09:53.928532+08:00"
+    },
+    "wind": {
+      "score": 2,
+      "message": "未来24小时大风：最大风速54公里/小时，阵风数据未知。",
+      "notified_at": "2026-11-28T10:09:53.928532+08:00"
     }
   },
   "location": {
